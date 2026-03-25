@@ -1,0 +1,2653 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Mastery Pro — Complete Trading Education Platform</title>
+<link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap)" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c10;
+  --bg2: #0d1117;
+  --bg3: #111820;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --accent: #00d4aa;
+  --accent2: #3b82f6;
+  --bull: #00d4aa;
+  --bear: #ff4d6d;
+  --gold: #f59e0b;
+  --purple: #8b5cf6;
+  --nav-h: 60px;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-display);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+::selection { background: rgba(0,212,170,0.2); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  background: rgba(8,12,16,0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  gap: 1rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-weight: 800; font-size: 1.1rem; letter-spacing: -0.03em;
+  text-decoration: none; color: var(--text); white-space: nowrap;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.nav-links { display: flex; gap: 0.1rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  padding: 0.35rem 0.6rem; border-radius: 4px; white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--accent); background: rgba(0,212,170,0.08); }
+.nav-right { display: flex; gap: 0.5rem; align-items: center; flex-shrink: 0; }
+.btn-ghost {
+  background: none; border: 1px solid var(--border2); border-radius: 6px;
+  color: var(--text); font-family: var(--font-mono); font-size: 0.75rem;
+  padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-accent {
+  background: var(--accent); border: none; border-radius: 6px;
+  color: #000; font-family: var(--font-display); font-weight: 700; font-size: 0.75rem;
+  padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-accent:hover { background: #00f0c0; transform: translateY(-1px); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; padding: var(--nav-h) 2rem 0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,212,170,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 80% 20%, rgba(59,130,246,0.05) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+.hero-inner { max-width: 900px; text-align: center; position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.25);
+  border-radius: 99px; padding: 0.3rem 0.9rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800;
+  letter-spacing: -0.04em; line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+.hero h1 span { color: var(--accent); }
+.hero p {
+  font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 2rem;
+  font-weight: 400; line-height: 1.7;
+}
+.hero-ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.cta-primary {
+  background: var(--accent); color: #000; font-weight: 700;
+  padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+  font-size: 0.9rem; transition: all 0.25s; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.cta-primary:hover { background: #00f0c0; transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,212,170,0.3); }
+.cta-secondary {
+  background: transparent; color: var(--text); font-weight: 600;
+  padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
+  font-size: 0.9rem; border: 1px solid var(--border2); transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; max-width: 700px; margin: 3rem auto 0;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1rem;
+}
+.hero-stat-val { font-size: 1.6rem; font-weight: 800; font-family: var(--font-mono); color: var(--accent); }
+.hero-stat-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 0.2rem; }
+
+/* ─── SECTIONS ─── */
+section { scroll-margin-top: var(--nav-h); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-pad { padding: 6rem 0; }
+.section-kicker {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem;
+}
+.section-sub { color: var(--muted); font-size: 0.95rem; max-width: 640px; line-height: 1.7; }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--border2); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+/* ─── SIGNAL BADGE ─── */
+.signal {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  border-radius: 4px; padding: 0.2rem 0.6rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+.signal.buy { background: rgba(0,212,170,0.15); color: var(--bull); border: 1px solid rgba(0,212,170,0.3); }
+.signal.sell { background: rgba(255,77,109,0.15); color: var(--bear); border: 1px solid rgba(255,77,109,0.3); }
+.signal.wait { background: rgba(245,158,11,0.15); color: var(--gold); border: 1px solid rgba(245,158,11,0.3); }
+
+/* ─── CANDLE PATTERN CARDS ─── */
+#candleGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.candle-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.candle-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.candle-canvas-wrap { background: var(--bg3); padding: 1rem; display: flex; justify-content: center; }
+.candle-canvas-wrap canvas { display: block; }
+.candle-info { padding: 1.25rem; }
+.candle-name { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.candle-rows { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+.candle-row { display: flex; gap: 0.5rem; }
+.candle-row-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); min-width: 70px; padding-top: 0.1rem; }
+.candle-row-val { font-size: 0.78rem; color: #b0bec5; line-height: 1.5; }
+
+/* ─── FILTER BAR ─── */
+.filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.filter-btn {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 6px; color: var(--muted); font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600; padding: 0.4rem 0.9rem; cursor: pointer;
+  letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(0,212,170,0.08); }
+.filter-btn.bear-active { border-color: var(--bear); color: var(--bear); background: rgba(255,77,109,0.08); }
+.filter-btn.wait-active { border-color: var(--gold); color: var(--gold); background: rgba(245,158,11,0.08); }
+
+/* ─── STRATEGY TABS ─── */
+.strategy-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.stab {
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 6px; color: var(--muted); font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 600; padding: 0.5rem 1.1rem; cursor: pointer;
+  transition: all 0.2s;
+}
+.stab.active { background: var(--accent); border-color: var(--accent); color: #000; }
+.stab-content { display: none; }
+.stab-content.active { display: block; }
+
+/* ─── ROADMAP ─── */
+.roadmap-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.roadmap-item:last-child { border-bottom: none; }
+.roadmap-num {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; font-family: var(--font-mono); color: #000;
+  margin-top: 0.15rem;
+}
+.roadmap-num.done { background: rgba(0,212,170,0.2); color: var(--accent); }
+.roadmap-check { accent-color: var(--accent); width: 16px; height: 16px; margin-top: 0.2rem; flex-shrink: 0; }
+.roadmap-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+.roadmap-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.progress-bar { height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; margin-top: 1.5rem; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; transition: width 0.5s ease; }
+
+/* ─── CHART ─── */
+#chart-main { width: 100%; height: 480px; border-radius: 8px; overflow: hidden; }
+.chart-controls { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+.tf-btn {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 5px; color: var(--muted); font-family: var(--font-mono);
+  font-size: 0.72rem; padding: 0.35rem 0.7rem; cursor: pointer; transition: all 0.2s;
+}
+.tf-btn.active { background: rgba(0,212,170,0.12); border-color: var(--accent); color: var(--accent); }
+.chart-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+.cstat { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+.cstat-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.cstat-val { font-size: 1.2rem; font-weight: 700; font-family: var(--font-mono); margin-top: 0.3rem; }
+
+/* ─── CHECKLIST ─── */
+.check-list { display: grid; gap: 0; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+}
+.check-item:last-child { border-bottom: none; }
+.check-item input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; margin-top: 0.1rem; }
+.check-item label { font-size: 0.82rem; line-height: 1.5; cursor: pointer; }
+
+/* ─── INFO BOX ─── */
+.info-box {
+  border-radius: 8px; padding: 1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(0,212,170,0.06);
+  font-size: 0.82rem; line-height: 1.7; color: #90caf9;
+}
+.info-box.danger { border-color: var(--bear); background: rgba(255,77,109,0.06); color: #ffb3c1; }
+.info-box.gold { border-color: var(--gold); background: rgba(245,158,11,0.06); color: #fcd34d; }
+.info-box.purple { border-color: var(--purple); background: rgba(139,92,246,0.06); color: #c4b5fd; }
+
+/* ─── TABLE ─── */
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+th { background: var(--bg3); color: var(--muted); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ─── FAQ ─── */
+details.faq { border-bottom: 1px solid var(--border); }
+details.faq:last-child { border-bottom: none; }
+details.faq summary { padding: 1.1rem 0; cursor: pointer; font-weight: 600; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+details.faq summary::after { content: '+'; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
+details.faq[open] summary::after { transform: rotate(45deg); }
+details.faq p { padding-bottom: 1.1rem; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── GLOSSARY ─── */
+.gloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
+.gloss-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+.gloss-term { font-weight: 700; font-size: 0.85rem; color: var(--accent); margin-bottom: 0.3rem; }
+.gloss-def { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── TICKER ─── */
+.ticker-wrap { overflow: hidden; background: var(--bg3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.5rem 0; margin: 3rem 0; }
+.ticker-inner { display: flex; gap: 3rem; animation: ticker 40s linear infinite; white-space: nowrap; }
+.ticker-inner:hover { animation-play-state: paused; }
+.ticker-item { font-family: var(--font-mono); font-size: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.ticker-sym { font-weight: 700; }
+.ticker-chg.pos { color: var(--bull); }
+.ticker-chg.neg { color: var(--bear); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── INDICATOR CARDS ─── */
+.ind-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+.ind-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.ind-formula { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: rgba(0,212,170,0.08); border-radius: 4px; padding: 0.4rem 0.7rem; margin: 0.5rem 0; }
+.ind-use { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.ind-signal { font-size: 0.75rem; margin-top: 0.6rem; }
+.ind-signal span { display: inline-block; margin: 0.2rem 0; }
+
+/* ─── LIVE SIGNAL BOX ─── */
+.live-signal { 
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; 
+  padding: 1.5rem; position: relative; overflow: hidden;
+}
+.live-signal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bull); display: inline-block; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,212,170,0.4); } 50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0,212,170,0); } }
+
+/* ─── TIMELINE ─── */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.timeline-item { position: relative; padding-bottom: 2rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before { content: ''; position: absolute; left: -1.55rem; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+.timeline-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.timeline-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── MARKET TYPE CARDS ─── */
+.market-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+.market-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.market-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.market-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.market-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── BROKER COMPARISON ─── */
+.broker-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+.broker-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.broker-badge { font-size: 0.6rem; padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(0,212,170,0.15); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+.broker-row { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
+.broker-row:last-child { border-bottom: none; }
+.broker-row span:first-child { color: var(--muted); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; margin-top: 4rem; }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.footer-brand { font-weight: 800; font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-legal { font-size: 0.72rem; color: var(--muted); line-height: 1.7; }
+.footer-links h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.75rem; }
+.footer-links a { display: block; font-size: 0.8rem; color: var(--muted); text-decoration: none; margin-bottom: 0.35rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .chart-stats { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.4rem; }
+}
+
+/* ─── RISK CALC ─── */
+.calc-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+.calc-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.3rem; }
+.calc-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--font-mono); font-size: 0.85rem; padding: 0.5rem 0.75rem; width: 100%; outline: none; transition: border-color 0.2s; }
+.calc-input:focus { border-color: var(--accent); }
+.calc-output { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.25); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.88rem; }
+
+/* ─── JOURNAL ─── */
+.journal-entry { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; font-size: 0.78rem; margin-top: 0.5rem; }
+.journal-entry .j-sym { font-weight: 700; color: var(--accent); }
+.journal-entry .j-time { color: var(--muted); font-size: 0.68rem; font-family: var(--font-mono); }
+
+/* ─── COMPARISON TABLE ─── */
+.comparison-table { overflow-x: auto; }
+.comparison-table table { min-width: 600px; }
+.comparison-table .check { color: var(--bull); }
+.comparison-table .cross { color: var(--bear); }
+
+/* ─── STEP CARDS ─── */
+.step-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; }
+.step-number { position: absolute; top: -12px; left: 1.5rem; background: var(--accent); color: #000; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 12px; }
+.step-title { font-weight: 700; font-size: 1rem; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+.step-content { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── QUOTE BOX ─── */
+.quote-box { background: var(--bg3); border-left: 3px solid var(--purple); padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+.quote-text { font-size: 1rem; font-style: italic; color: var(--text); line-height: 1.7; margin-bottom: 0.5rem; }
+.quote-author { font-size: 0.75rem; color: var(--muted); }
+
+/* ─── MISTAKES GRID ─── */
+.mistake-card { background: rgba(255,77,109,0.05); border: 1px solid rgba(255,77,109,0.2); border-radius: 10px; padding: 1.25rem; }
+.mistake-title { font-weight: 700; font-size: 0.9rem; color: var(--bear); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.mistake-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.mistake-fix { font-size: 0.75rem; color: var(--bull); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,77,109,0.2); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">📈</div>
+    TMP
+  </a>
+  <div class="nav-links">
+    <a href="#getting-started">Start</a>
+    <a href="#markets">Markets</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#live-chart">Charts</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#strategies">Strategies</a>
+    <a href="#indicators">Indicators</a>
+    <a href="#risk">Risk</a>
+    <a href="#brokers">Brokers</a>
+    <a href="#mistakes">Mistakes</a>
+    <a href="#psychology">Mindset</a>
+    <a href="#glossary">Glossary</a>
+  </div>
+  <div class="nav-right">
+    <span class="live-dot"></span>
+    <span style="font-size:0.68rem;color:var(--muted);font-family:var(--font-mono)">LIVE DEMO</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">🎯 Educational Only — Not Financial Advice</div>
+    <h1>Master the <span>Art</span> of<br>Reading Markets</h1>
+    <p>The most comprehensive free trading education platform. 40+ candlestick patterns, interactive charts, step-by-step guides, risk calculators, broker comparisons, and proven strategies used by professional traders.</p>
+    <div class="hero-ctas">
+      <a href="#getting-started" class="cta-primary">Start Learning →</a>
+      <a href="#patterns" class="cta-secondary">Pattern Library</a>
+      <a href="#live-chart" class="cta-secondary">Live Demo Chart</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">40+</div><div class="hero-stat-lbl">Patterns</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">15</div><div class="hero-stat-lbl">Strategies</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">100+</div><div class="hero-stat-lbl">Concepts</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-lbl">Free</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- WHAT IS TRADING -->
+<section id="getting-started" class="section-pad">
+<div class="container">
+  <div class="section-kicker">The Foundation</div>
+  <div class="section-title">What Is Trading & How Does It Work?</div>
+  <p class="section-sub">Trading is the act of buying and selling financial instruments to profit from price movements. Before risking a single dollar, understand these fundamentals.</p>
+
+  <div class="grid-2" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:1rem">🎯</div>
+      <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Trading vs Investing</div>
+      <table style="margin-top:1rem">
+        <tr><th>Aspect</th><th>Trading</th><th>Investing</th></tr>
+        <tr><td>Time Horizon</td><td>Minutes to weeks</td><td>Years to decades</td></tr>
+        <tr><td>Goal</td><td>Profit from price swings</td><td>Build long-term wealth</td></tr>
+        <tr><td>Analysis</td><td>Technical (charts)</td><td>Fundamental (value)</td></tr>
+        <tr><td>Time Required</td><td>Active monitoring</td><td>Minimal oversight</td></tr>
+        <tr><td>Risk Profile</td><td>Higher, more frequent</td><td>Lower, compounded</td></tr>
+        <tr><td>Skill Needed</td><td>Pattern recognition, discipline</td><td>Patience, research</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:1rem">📊</div>
+      <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">How Markets Work</div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">
+        Every trade requires a buyer AND a seller. When you buy EUR/USD, someone else is selling it to you. The price moves based on the imbalance between buyers (demand) and sellers (supply).
+      </p>
+      <div class="info-box">
+        <strong>The Basic Equation:</strong><br>
+        More buyers than sellers → Price goes UP ↑<br>
+        More sellers than buyers → Price goes DOWN ↓<br>
+        Equal pressure → Price consolidates sideways ↔
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:1rem">
+        Your job as a trader is to identify when this balance is about to shift and position yourself accordingly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-box">
+    <div class="quote-text">"The goal of a successful trader is to make the best trades. Money is secondary."</div>
+    <div class="quote-author">— Alexander Elder, Trading for a Living</div>
+  </div>
+
+  <!-- Types of Traders -->
+  <div style="margin-top:3rem">
+    <div style="font-weight:700;font-size:1.2rem;margin-bottom:1.5rem">Types of Traders — Which Are You?</div>
+    <div class="grid-4">
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">⚡</div>
+        <div style="font-weight:700;margin-bottom:0.5rem">Scalper</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Seconds to minutes</div>
+        <ul style="list-style:none;font-size:0.75rem;color:var(--muted);text-align:left">
+          <li>• 10-100+ trades/day</li>
+          <li>• 3-10 pip targets</li>
+          <li>• Requires fast execution</li>
+          <li>• High stress, high focus</li>
+          <li>• NOT for beginners</li>
+        </ul>
+      </div>
+      <div class="card" style="text-align:center;border-color:var(--accent)">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📅</div>
+        <div style="font-weight:700;margin-bottom:0.5rem;color:var(--accent)">Day Trader</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Minutes to hours</div>
+        <ul style="list-style:none;font-size:0.75rem;color:var(--muted);text-align:left">
+          <li>• 1-10 trades/day</li>
+          <li>• 20-100 pip targets</li>
+          <li>• No overnight risk</li>
+          <li>• Moderate screen time</li>
+          <li>• Good starting point</li>
+        </ul>
+        <div class="signal buy" style="margin-top:0.75rem;font-size:0.65rem">RECOMMENDED START</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">🌊</div>
+        <div style="font-weight:700;margin-bottom:0.5rem">Swing Trader</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Days to weeks</div>
+        <ul style="list-style:none;font-size:0.75rem;color:var(--muted);text-align:left">
+          <li>• 2-10 trades/week</li>
+          <li>• 100-500 pip targets</li>
+          <li>• Overnight/weekend risk</li>
+          <li>• Works with full-time job</li>
+          <li>• Best for busy people</li>
+        </ul>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">🏔️</div>
+        <div style="font-weight:700;margin-bottom:0.5rem">Position Trader</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Weeks to months</div>
+        <ul style="list-style:none;font-size:0.75rem;color:var(--muted);text-align:left">
+          <li>• 1-5 trades/month</li>
+          <li>• 500-2000 pip targets</li>
+          <li>• Fundamental focus</li>
+          <li>• Minimal screen time</li>
+          <li>• Closest to investing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Choose Your Arena</div>
+  <div class="section-title">Financial Markets Explained</div>
+  <p class="section-sub">Different markets have different characteristics, costs, and hours. Pick ONE to master before diversifying.</p>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="market-card">
+      <div class="market-icon">💱</div>
+      <div class="market-name">Forex (FX)</div>
+      <div class="market-desc">
+        Trade currency pairs like EUR/USD. $6+ trillion daily volume. Open 24/5. Low barriers to entry, high leverage available (dangerous). Best for: beginners with small accounts.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $100-500</span>
+          <span>⏰ Hours: Sun 5pm - Fri 5pm ET</span>
+          <span>📈 Typical leverage: 50:1 - 500:1</span>
+          <span>💰 Costs: Spread + swap</span>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">📈</div>
+      <div class="market-name">Stocks & ETFs</div>
+      <div class="market-desc">
+        Buy shares of companies (AAPL, TSLA) or baskets (SPY, QQQ). Ownership stake in businesses. Best for: building wealth, swing trading, longer holds.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $0 (fractional shares)</span>
+          <span>⏰ Hours: 9:30am - 4pm ET</span>
+          <span>📈 Leverage: 2:1 (margin account)</span>
+          <span>💰 Costs: Commission + spread</span>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">🔮</div>
+      <div class="market-name">Futures</div>
+      <div class="market-desc">
+        Contracts to buy/sell at future date. ES (S&P 500), NQ (Nasdaq), CL (Oil). Standardized, exchange-traded. Best for: experienced traders, large accounts.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $5,000-25,000</span>
+          <span>⏰ Hours: Nearly 24/5</span>
+          <span>📈 Leverage: 20:1 - 50:1</span>
+          <span>💰 Costs: Commission + exchange fees</span>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">⚡</div>
+      <div class="market-name">Cryptocurrency</div>
+      <div class="market-desc">
+        Digital assets (BTC, ETH). 24/7 trading, extreme volatility. Largely unregulated. Best for: high risk tolerance, tech-savvy traders.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $10+</span>
+          <span>⏰ Hours: 24/7/365</span>
+          <span>📈 Leverage: 1:1 - 125:1</span>
+          <span>💰 Costs: Spread + trading fees</span>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">📋</div>
+      <div class="market-name">Options</div>
+      <div class="market-desc">
+        Contracts giving right (not obligation) to buy/sell. Complex Greeks, time decay. Best for: experienced traders, hedging, income strategies.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $2,000+</span>
+          <span>⏰ Hours: Market hours</span>
+          <span>📈 Leverage: Built-in (premium)</span>
+          <span>💰 Costs: Commission + spread</span>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">🏦</div>
+      <div class="market-name">CFDs</div>
+      <div class="market-desc">
+        Contracts for Difference. Trade price movements without owning asset. Available on forex, stocks, indices. NOT available in US. Best for: non-US traders.
+      </div>
+      <div style="margin-top:1rem;text-align:left">
+        <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.5rem">KEY STATS:</div>
+        <div style="font-size:0.75rem;display:grid;gap:0.3rem">
+          <span>📍 Min account: $100-500</span>
+          <span>⏰ Hours: Varies by instrument</span>
+          <span>📈 Leverage: 2:1 - 30:1 (EU regulated)</span>
+          <span>💰 Costs: Spread + overnight fees</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Market Comparison -->
+  <div class="card" style="margin-top:2rem">
+    <div style="font-weight:700;margin-bottom:1rem">Market Comparison At A Glance</div>
+    <div class="comparison-table">
+      <table>
+        <tr>
+          <th>Market</th>
+          <th>Beginner Friendly</th>
+          <th>Small Account</th>
+          <th>Part-Time Trading</th>
+          <th>Low Costs</th>
+          <th>Regulated</th>
+        </tr>
+        <tr>
+          <td><strong>Forex</strong></td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Stocks</strong></td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Futures</strong></td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto</strong></td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td><strong>Options</strong></td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="check">✓</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW TO START -->
+<section id="how-to-start" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Step By Step</div>
+  <div class="section-title">Your First 30 Days in Trading</div>
+  <p class="section-sub">Follow this exact sequence. Skipping steps is why 90% of traders fail within their first year.</p>
+
+  <div class="grid-2" style="margin-top:2rem;gap:2rem">
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-title">Days 1-3: Education Foundation</div>
+          <div class="timeline-desc">
+            Read everything on this page. Understand bid/ask, spreads, pips, lots. Watch YouTube tutorials on candlestick basics. No trading yet — just absorb.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-title">Days 4-7: Platform Mastery</div>
+          <div class="timeline-desc">
+            Download a demo account (MT4, MT5, or TradingView). Learn every button, every order type. Place 50+ demo trades just to understand execution. Break things on purpose.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-title">Days 8-14: Chart Reading</div>
+          <div class="timeline-desc">
+            Study 100 historical charts. Mark support/resistance levels. Identify trends vs ranges. Label candlestick patterns. No trades — just observation and labeling.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-title">Days 15-21: One Strategy</div>
+          <div class="timeline-desc">
+            Pick ONE setup (e.g., trend pullback to support). Write clear rules for entry, stop loss, and target. Paper trade this setup 20+ times.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-title">Days 22-28: Demo Trading</div>
+          <div class="timeline-desc">
+            Trade your single strategy on demo with full position sizing math. Journal every trade. Calculate your win rate and average R after 30 trades minimum.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-title">Days 29-30: Review & Decision</div>
+          <div class="timeline-desc">
+            Analyze your journal. Are you profitable on demo? Did you follow your rules? If yes to both, consider going live with MINIMUM size. If no, repeat Days 15-28.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-box danger" style="margin-bottom:1.5rem">
+        <strong>⚠️ CRITICAL WARNING</strong><br><br>
+        Do NOT fund a live account until you have:<br>
+        ✗ 30+ demo trades with your exact strategy<br>
+        ✗ Positive expectancy over those trades<br>
+        ✗ Proven you can follow rules without deviation<br>
+        ✗ Money you can lose entirely without financial hardship<br><br>
+        This is not optional. This is survival.
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:1rem">🎯 Realistic Expectations</div>
+        <div style="display:grid;gap:1rem">
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bear);font-size:1.2rem">❌</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bear)">NOT REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">"Turn $100 into $10,000 in a month"</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bear);font-size:1.2rem">❌</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bear)">NOT REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">"Quit your job after 3 months of trading"</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bear);font-size:1.2rem">❌</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bear)">NOT REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">"Win 80%+ of your trades consistently"</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bull);font-size:1.2rem">✓</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bull)">REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">Break even after 6-12 months of serious work</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bull);font-size:1.2rem">✓</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bull)">REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">10-30% annual returns after 2-3 years</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--bull);font-size:1.2rem">✓</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;color:var(--bull)">REALISTIC</div>
+              <div style="font-size:0.78rem;color:var(--muted)">40-55% win rate with 2:1+ reward/risk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BROKERS -->
+<section id="brokers" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Choose Wisely</div>
+  <div class="section-title">Broker Selection Guide</div>
+  <p class="section-sub">Your broker is your partner in every trade. A bad broker can wipe you out through slippage, spreads, or worse — fraud. Here's how to choose.</p>
+
+  <div class="info-box gold" style="margin-top:2rem;margin-bottom:2rem">
+    <strong>🔍 Before Opening Any Account, Verify:</strong><br>
+    ① Regulation status (FCA, ASIC, NFA, CySEC)<br>
+    ② Segregated client funds (your money separate from theirs)<br>
+    ③ Execution model (STP/ECN vs market maker)<br>
+    ④ Read independent reviews on Trustpilot, ForexPeaceArmy
+  </div>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="broker-card">
+      <div class="broker-name">
+        Forex Broker Template
+        <span class="broker-badge">Example</span>
+      </div>
+      <div class="broker-row"><span>Regulation</span><span style="color:var(--bull)">FCA, ASIC</span></div>
+      <div class="broker-row"><span>Min Deposit</span><span>$100</span></div>
+      <div class="broker-row"><span>EUR/USD Spread</span><span>0.6 pips avg</span></div>
+      <div class="broker-row"><span>Max Leverage</span><span>30:1 (EU) / 500:1</span></div>
+      <div class="broker-row"><span>Platforms</span><span>MT4, MT5, cTrader</span></div>
+      <div class="broker-row"><span>Execution</span><span>STP/ECN</span></div>
+      <div class="info-box" style="margin-top:1rem;font-size:0.72rem;padding:0.75rem">
+        ✓ Always check regulation in YOUR country
+      </div>
+    </div>
+    <div class="broker-card">
+      <div class="broker-name">
+        Stock Broker Template
+        <span class="broker-badge">Example</span>
+      </div>
+      <div class="broker-row"><span>Regulation</span><span style="color:var(--bull)">SEC, FINRA</span></div>
+      <div class="broker-row"><span>Min Deposit</span><span>$0</span></div>
+      <div class="broker-row"><span>Commission</span><span>$0/trade</span></div>
+      <div class="broker-row"><span>Margin Rate</span><span>8-12% APR</span></div>
+      <div class="broker-row"><span>Platforms</span><span>Web, Mobile, Desktop</span></div>
+      <div class="broker-row"><span>Fractional Shares</span><span>Yes</span></div>
+      <div class="info-box gold" style="margin-top:1rem;font-size:0.72rem;padding:0.75rem">
+        ⚠️ "Free" brokers sell your order flow — understand the tradeoff
+      </div>
+    </div>
+    <div class="broker-card">
+      <div class="broker-name">
+        Futures Broker Template
+        <span class="broker-badge">Example</span>
+      </div>
+      <div class="broker-row"><span>Regulation</span><span style="color:var(--bull)">NFA, CFTC</span></div>
+      <div class="broker-row"><span>Min Deposit</span><span>$5,000</span></div>
+      <div class="broker-row"><span>ES Commission</span><span>$2.25/side</span></div>
+      <div class="broker-row"><span>Day Margin (ES)</span><span>$500/contract</span></div>
+      <div class="broker-row"><span>Platforms</span><span>NinjaTrader, Sierra</span></div>
+      <div class="broker-row"><span>Data Feeds</span><span>$15-100/mo</span></div>
+      <div class="info-box danger" style="margin-top:1rem;font-size:0.72rem;padding:0.75rem">
+        ❌ Futures have high barrier — start with forex or stocks
+      </div>
+    </div>
+  </div>
+
+  <!-- Red Flags -->
+  <div class="card" style="margin-top:2rem">
+    <div style="font-weight:700;margin-bottom:1rem;color:var(--bear)">🚩 Broker Red Flags — RUN If You See These</div>
+    <div class="grid-3" style="gap:1rem">
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Unregulated</strong><br>
+        No FCA/ASIC/SEC/CFTC license? Your funds have zero protection.
+      </div>
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Bonus offers</strong><br>
+        "100% deposit bonus" = strings attached, withdrawal blocked.
+      </div>
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Guaranteed profits</strong><br>
+        No legitimate broker promises returns. This is fraud.
+      </div>
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Pressure to deposit</strong><br>
+        Aggressive "account managers" calling = boiler room scam.
+      </div>
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Withdrawal delays</strong><br>
+        Read reviews. If people can't withdraw, neither will you.
+      </div>
+      <div style="font-size:0.78rem;color:var(--muted)">
+        <strong style="color:var(--bear)">❌ Offshore only</strong><br>
+        St. Vincent, Marshall Islands = no recourse if they steal funds.
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Your Path</div>
+  <div class="section-title">12-Step Roadmap to Consistency</div>
+  <p class="section-sub">Work top-to-bottom. Check each box honestly as you complete the skill, not the lesson.</p>
+
+  <div class="progress-bar" style="margin-bottom:2rem;margin-top:1.5rem;max-width:400px">
+    <div class="progress-fill" id="roadmapFill" style="width:0%"></div>
+  </div>
+  <p id="roadmapPct" style="font-size:0.75rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:2rem">0 / 12 steps complete</p>
+
+  <div class="card">
+    <div id="roadmapList">
+      <!-- generated by JS -->
+    </div>
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center">
+      <button onclick="resetRoadmap()" class="btn-ghost" style="font-size:0.72rem">Reset Progress</button>
+      <a href="#checklist" style="font-size:0.78rem;color:var(--accent);text-decoration:none;font-weight:600">Next: Pre-Trade Checklist →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHART READING BASICS -->
+<section id="chart-basics" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Essential Skill</div>
+  <div class="section-title">How to Read Charts Like a Pro</div>
+  <p class="section-sub">Charts are the language of markets. Learn to read them fluently before trading.</p>
+
+  <div class="grid-2" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-weight:800;font-size:1.1rem;margin-bottom:1rem">📊 Anatomy of a Candlestick</div>
+      <canvas id="candleAnatomy" width="300" height="200" style="width:100%;border-radius:8px;background:var(--bg3);margin-bottom:1rem"></canvas>
+      <div style="display:grid;gap:0.5rem">
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">Open:</strong> Where price started in this period</div>
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">Close:</strong> Where price ended (most important)</div>
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">High:</strong> Maximum price reached</div>
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">Low:</strong> Minimum price reached</div>
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">Body:</strong> Distance between open and close</div>
+        <div style="font-size:0.78rem;color:var(--muted)"><strong style="color:var(--text)">Wicks:</strong> Price rejection areas (key information)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-weight:800;font-size:1.1rem;margin-bottom:1rem">📈 What Candlesticks Tell You</div>
+      <div style="display:grid;gap:1rem">
+        <div style="padding:1rem;background:var(--bg3);border-radius:8px">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+            <span style="width:20px;height:30px;background:var(--bull);display:block;border-radius:2px"></span>
+            <strong style="font-size:0.85rem">Big Green Body</strong>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted)">Strong buying pressure. Buyers dominated the entire session. Bullish momentum.</p>
+        </div>
+        <div style="padding:1rem;background:var(--bg3);border-radius:8px">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+            <span style="width:20px;height:30px;background:var(--bear);display:block;border-radius:2px"></span>
+            <strong style="font-size:0.85rem">Big Red Body</strong>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted)">Strong selling pressure. Sellers dominated the entire session. Bearish momentum.</p>
+        </div>
+        <div style="padding:1rem;background:var(--bg3);border-radius:8px">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+            <span style="font-size:1.5rem">📍</span>
+            <strong style="font-size:0.85rem">Long Lower Wick</strong>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted)">Price went down but buyers pushed it back up. Rejection of lower prices. Potential support.</p>
+        </div>
+        <div style="padding:1rem;background:var(--bg3);border-radius:8px">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+            <span style="font-size:1.5rem">📍</span>
+            <strong style="font-size:0.85rem">Long Upper Wick</strong>
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted)">Price went up but sellers pushed it back down. Rejection of higher prices. Potential resistance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support & Resistance -->
+  <div class="card" style="margin-top:2rem">
+    <div style="font-weight:800;font-size:1.1rem;margin-bottom:1rem">🎯 Support & Resistance — The Foundation of All Trading</div>
+    <div class="grid-2">
+      <div>
+        <canvas id="srCanvas" width="400" height="200" style="width:100%;border-radius:8px;background:var(--bg3)"></canvas>
+      </div>
+      <div>
+        <div style="margin-bottom:1rem">
+          <div style="color:var(--bull);font-weight:700;font-size:0.85rem;margin-bottom:0.3rem">SUPPORT (Green Line)</div>
+          <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">A price level where buying interest is strong enough to prevent further decline. Think of it as a "floor." When price approaches support, expect bounces — until it breaks.</p>
+        </div>
+        <div style="margin-bottom:1rem">
+          <div style="color:var(--bear);font-weight:700;font-size:0.85rem;margin-bottom:0.3rem">RESISTANCE (Red Line)</div>
+          <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">A price level where selling interest is strong enough to prevent further advance. Think of it as a "ceiling." When price approaches resistance, expect rejections — until it breaks.</p>
+        </div>
+        <div class="info-box" style="font-size:0.75rem">
+          <strong>KEY CONCEPT:</strong> When support breaks, it becomes resistance. When resistance breaks, it becomes support. This "flip" is one of the highest-probability trade setups.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trend Structure -->
+  <div class="card" style="margin-top:2rem">
+    <div style="font-weight:800;font-size:1.1rem;margin-bottom:1rem">📈 Trend Structure — Higher Highs, Higher Lows</div>
+    <div class="grid-2">
+      <div>
+        <canvas id="trendCanvas" width="400" height="200" style="width:100%;border-radius:8px;background:var(--bg3)"></canvas>
+      </div>
+      <div>
+        <div style="padding:1rem;background:rgba(0,212,170,0.08);border-radius:8px;margin-bottom:1rem">
+          <div style="color:var(--bull);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem">🟢 UPTREND</div>
+          <ul style="font-size:0.78rem;color:var(--muted);padding-left:1rem;display:grid;gap:0.3rem">
+            <li>Higher Highs (HH) — Each peak above previous</li>
+            <li>Higher Lows (HL) — Each dip above previous dip</li>
+            <li>Trade with the trend: Buy pullbacks to HL</li>
+            <li>Trend breaks when price makes Lower Low</li>
+          </ul>
+        </div>
+        <div style="padding:1rem;background:rgba(255,77,109,0.08);border-radius:8px">
+          <div style="color:var(--bear);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem">🔴 DOWNTREND</div>
+          <ul style="font-size:0.78rem;color:var(--muted);padding-left:1rem;display:grid;gap:0.3rem">
+            <li>Lower Highs (LH) — Each rally below previous</li>
+            <li>Lower Lows (LL) — Each drop below previous</li>
+            <li>Trade with the trend: Sell rallies to LH</li>
+            <li>Trend breaks when price makes Higher High</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- LIVE CHART -->
+<section id="live-chart" class="section-pad" style="padding-top:0">
+<div class="container">
+  <div class="section-kicker">Interactive Demo</div>
+  <div class="section-title">Professional OHLC Chart</div>
+  <p class="section-sub">Synthetic EUR/USD-style data. Switch timeframes, read RSI, volume, and bias — all rendered with real candlestick geometry.</p>
+
+  <div class="card" style="margin-top:2rem">
+    <div class="chart-controls">
+      <button class="tf-btn active" onclick="setTF(60,this)" data-tf="60">1H</button>
+      <button class="tf-btn" onclick="setTF(240,this)" data-tf="240">4H</button>
+      <button class="tf-btn" onclick="setTF(1440,this)" data-tf="1440">1D</button>
+      <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center">
+        <span class="live-dot"></span>
+        <span style="font-size:0.68rem;color:var(--muted);font-family:var(--font-mono)">SYNTHETIC FEED · EDUCATIONAL</span>
+      </div>
+    </div>
+    <div id="chart-main"></div>
+    <div class="chart-stats">
+      <div class="cstat"><div class="cstat-lbl">Last Close</div><div class="cstat-val" id="sc-close" style="color:var(--bull)">—</div></div>
+      <div class="cstat"><div class="cstat-lbl">H-L Range</div><div class="cstat-val" id="sc-range">—</div></div>
+      <div class="cstat"><div class="cstat-lbl">RSI(14)</div><div class="cstat-val" id="sc-rsi">—</div></div>
+      <div class="cstat"><div class="cstat-lbl">Bias Signal</div><div class="cstat-val" id="sc-bias" style="font-size:0.78rem">—</div></div>
+    </div>
+  </div>
+
+  <!-- Signal explainer -->
+  <div class="grid-2" style="margin-top:1.5rem;gap:1rem">
+    <div class="live-signal">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+        <span class="live-dot"></span>
+        <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)">HOW TO READ THIS CHART</span>
+      </div>
+      <ul style="list-style:none;display:grid;gap:0.5rem">
+        <li style="font-size:0.8rem;color:var(--muted)">🟢 <strong style="color:var(--text)">Green candle</strong> — Close above open (buyers won)</li>
+        <li style="font-size:0.8rem;color:var(--muted)">🔴 <strong style="color:var(--text)">Red candle</strong> — Close below open (sellers won)</li>
+        <li style="font-size:0.8rem;color:var(--muted)">📏 <strong style="color:var(--text)">Upper wick</strong> — Price reached there but was rejected</li>
+        <li style="font-size:0.8rem;color:var(--muted)">📏 <strong style="color:var(--text)">Lower wick</strong> — Buyers stepped in before close</li>
+        <li style="font-size:0.8rem;color:var(--muted)">📊 <strong style="color:var(--text)">RSI &gt; 70</strong> — Overbought, watch for reversal candles</li>
+        <li style="font-size:0.8rem;color:var(--muted)">📊 <strong style="color:var(--text)">RSI &lt; 30</strong> — Oversold, watch for bounce candles</li>
+      </ul>
+    </div>
+    <div class="live-signal" style="border-color:rgba(255,77,109,0.3)">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--bear);display:inline-block"></span>
+        <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)">CRITICAL RULES</span>
+      </div>
+      <ul style="list-style:none;display:grid;gap:0.5rem">
+        <li style="font-size:0.8rem;color:var(--muted)">❌ <strong style="color:var(--bear)">NEVER</strong> trade a pattern without a confirmed stop loss</li>
+        <li style="font-size:0.8rem;color:var(--muted)">❌ <strong style="color:var(--bear)">NEVER</strong> enter on a candle forming — wait for close</li>
+        <li style="font-size:0.8rem;color:var(--muted)">✅ <strong style="color:var(--bull)">ALWAYS</strong> check higher timeframe trend first</li>
+        <li style="font-size:0.8rem;color:var(--muted)">✅ <strong style="color:var(--bull)">ALWAYS</strong> know your invalidation level before entry</li>
+        <li style="font-size:0.8rem;color:var(--muted)">⚡ Pattern at <strong style="color:var(--text)">support/resistance</strong> = higher probability</li>
+        <li style="font-size:0.8rem;color:var(--muted)">⚡ Pattern with <strong style="color:var(--text)">volume spike</strong> = stronger confirmation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PATTERNS -->
+<section id="patterns" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Pattern Library</div>
+  <div class="section-title">Candlestick Encyclopedia</div>
+  <p class="section-sub">Every pattern drawn programmatically — no broken images. Each card tells you: what it looks like, when to BUY/SELL, and when the signal fails.</p>
+
+  <div style="margin-top:1.5rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCandles('all',this)">All</button>
+      <button class="filter-btn" onclick="filterCandles('bullish',this)" style="--hover-color:var(--bull)">🟢 Bullish</button>
+      <button class="filter-btn" onclick="filterCandles('bearish',this)">🔴 Bearish</button>
+      <button class="filter-btn" onclick="filterCandles('neutral',this)">🟡 Neutral</button>
+    </div>
+    <input id="patternSearch" placeholder="Search patterns..." style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--font-display);font-size:0.78rem;padding:0.4rem 0.8rem;outline:none;width:200px" oninput="filterCandles('search',null,this.value)">
+  </div>
+
+  <div id="candleGrid"></div>
+</div>
+</section>
+
+<!-- CHART PATTERNS -->
+<section id="chart-patterns" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Macro Patterns</div>
+  <div class="section-title">Classic Chart Patterns</div>
+  <p class="section-sub">Multi-candle formations that play out over days to weeks. Higher timeframes = higher reliability.</p>
+
+  <div class="grid-2" style="margin-top:2rem">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Head & Shoulders</div>
+          <span class="signal sell">🔴 Bearish Reversal</span>
+        </div>
+      </div>
+      <canvas id="hnsCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem;display:grid;gap:0.4rem">
+        <div class="info-box danger" style="font-size:0.75rem">
+          <strong>SELL signal:</strong> Short break of neckline + retest fails. Stop above right shoulder. Target = head height projected down.
+        </div>
+        <p style="font-size:0.75rem;color:var(--muted)">Needs time separation between peaks. Volume often lower on right shoulder. Classic top reversal after uptrend.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Inverse Head & Shoulders</div>
+          <span class="signal buy">🟢 Bullish Reversal</span>
+        </div>
+      </div>
+      <canvas id="ihnsCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem">
+        <div class="info-box" style="font-size:0.75rem">
+          <strong>BUY signal:</strong> Long on neckline breakout + retest holds. Stop below right shoulder. Target = head depth projected up.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Double Top</div>
+          <span class="signal sell">🔴 Bearish Reversal</span>
+        </div>
+      </div>
+      <canvas id="dtCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem">
+        <div class="info-box danger" style="font-size:0.75rem">
+          <strong>SELL signal:</strong> Two equal highs + break of neckline. Second peak ideally has less volume. Stop above tops.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Bull Flag / Pennant</div>
+          <span class="signal buy">🟢 Bullish Continuation</span>
+        </div>
+      </div>
+      <canvas id="bfCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem">
+        <div class="info-box" style="font-size:0.75rem">
+          <strong>BUY signal:</strong> Strong pole + tight consolidation + breakout above flag boundary. Stop inside flag. Target = pole height added to breakout.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Ascending Triangle</div>
+          <span class="signal buy">🟢 Bullish Continuation</span>
+        </div>
+      </div>
+      <canvas id="atCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem">
+        <div class="info-box" style="font-size:0.75rem">
+          <strong>BUY signal:</strong> Flat resistance + rising support. Enter on breakout above resistance. Target = triangle height.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem">
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:0.3rem">Descending Triangle</div>
+          <span class="signal sell">🔴 Bearish Continuation</span>
+        </div>
+      </div>
+      <canvas id="descTriCanvas" width="320" height="140" style="width:100%;border-radius:6px;background:var(--bg3)"></canvas>
+      <div style="margin-top:0.75rem">
+        <div class="info-box danger" style="font-size:0.75rem">
+          <strong>SELL signal:</strong> Flat support + falling resistance. Short on breakdown below support. Target = triangle height.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- STRATEGIES -->
+<section id="strategies" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Playbooks</div>
+  <div class="section-title">Complete Trading Strategies</div>
+  <p class="section-sub">Choose one. Master it before adding another. Context → Location → Trigger → Risk is the universal template.</p>
+
+  <div class="strategy-tabs" style="margin-top:2rem">
+    <button class="stab active" onclick="showStrat('trend',this)">📈 Trend Follow</button>
+    <button class="stab" onclick="showStrat('revert',this)">↩️ Mean Reversion</button>
+    <button class="stab" onclick="showStrat('break',this)">💥 Breakout</button>
+    <button class="stab" onclick="showStrat('scalp',this)">⚡ Scalp</button>
+    <button class="stab" onclick="showStrat('swing',this)">🌊 Swing</button>
+    <button class="stab" onclick="showStrat('supply',this)">📦 Supply/Demand</button>
+    <button class="stab" onclick="showStrat('fib',this)">🔢 Fibonacci</button>
+  </div>
+
+  <div id="strat-trend" class="stab-content active card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Trend Following</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Trade pullbacks in the direction of higher-timeframe bias. Never fight strong trends — join them on weakness.</p>
+        <div class="info-box" style="margin-bottom:1rem">
+          <strong>Entry Conditions (all must be true):</strong><br>
+          ① HTF (daily/weekly) shows clear HH/HL structure<br>
+          ② Price pulls back to S/R or moving average<br>
+          ③ Trigger candle appears (hammer, engulfing, pinbar)<br>
+          ④ RSI not at extreme (avoid chasing)
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Pullback to 50MA + bullish engulfing at support</span>
+          <span class="signal sell">SELL: Rally to resistance + bearish engulfing rejection</span>
+          <span class="signal wait">AVOID: Sideways chop with ADX below 20</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Trade Template</th></tr>
+          <tr><td>Setup</td><td>HTF uptrend, LTF pullback to level</td></tr>
+          <tr><td>Entry</td><td>Break of trigger candle high (+1 tick)</td></tr>
+          <tr><td>Stop</td><td>Below pattern low + spread</td></tr>
+          <tr><td>Target 1</td><td>1.5R — scale 50% out</td></tr>
+          <tr><td>Target 2</td><td>2.5R — trail remainder</td></tr>
+          <tr><td>Invalidation</td><td>Close below stop, no adjustment</td></tr>
+          <tr><td>Best markets</td><td>FX majors, trending stocks, futures</td></tr>
+          <tr><td>Avoid</td><td>News events, pre-earnings, thin markets</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-revert" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Mean Reversion</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Fade stretched moves back to equilibrium. Only valid in range-bound conditions — the single most misused strategy.</p>
+        <div class="info-box gold" style="margin-bottom:1rem">
+          <strong>Entry Conditions:</strong><br>
+          ① ADX below 20 (ranging market confirmed)<br>
+          ② RSI at 70+ (sell) or 30- (buy) extreme<br>
+          ③ Price at defined S/R boundary<br>
+          ④ Reversal trigger candle present
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: RSI &lt; 30 + hammer at range support</span>
+          <span class="signal sell">SELL: RSI &gt; 70 + shooting star at range resistance</span>
+          <span class="signal wait">AVOID: Any confirmed trending market (ADX &gt; 25)</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Trade Template</th></tr>
+          <tr><td>Filter</td><td>ADX &lt; 20, defined range for 10+ bars</td></tr>
+          <tr><td>Entry</td><td>Limit at boundary or break of reversal candle</td></tr>
+          <tr><td>Stop</td><td>Outside range (beyond swing high/low)</td></tr>
+          <tr><td>Target</td><td>Midline of range, then opposite side</td></tr>
+          <tr><td>Time stop</td><td>Exit if no movement in 3-5 candles</td></tr>
+          <tr><td>Best markets</td><td>FX during Asian session, sector ETFs</td></tr>
+          <tr><td>Avoid</td><td>Trending breakouts, news environments</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-break" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Breakout / Retest</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Trade acceptance outside a level — not the first tick through. Waiting for retest drastically improves win rate.</p>
+        <div class="info-box" style="margin-bottom:1rem">
+          <strong>Entry Conditions:</strong><br>
+          ① Clear consolidation / accumulation zone<br>
+          ② Price breaks and <em>closes</em> beyond level<br>
+          ③ Wait for retest of broken level<br>
+          ④ Retest holds + trigger candle forms
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Break above resistance, retest holds as support</span>
+          <span class="signal sell">SELL: Break below support, retest fails at that level</span>
+          <span class="signal wait">AVOID: Breakouts into major counter-trend levels</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Trade Template</th></tr>
+          <tr><td>Entry</td><td>Limit at retest level (reactive entry)</td></tr>
+          <tr><td>Aggressive entry</td><td>Market on breakout close (momentum)</td></tr>
+          <tr><td>Stop</td><td>Beyond failed retest candle low/high</td></tr>
+          <tr><td>Target</td><td>Next structural level or 2R minimum</td></tr>
+          <tr><td>Volume check</td><td>Break should have above-avg volume (stocks)</td></tr>
+          <tr><td>Best markets</td><td>Stocks, crypto, index futures</td></tr>
+          <tr><td>False breakout?</td><td>Price reclaims level — exit immediately</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-scalp" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Scalping</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">High frequency, tiny targets. Costs dominate. Not beginner-friendly — requires fast execution and strict rules.</p>
+        <div class="info-box danger" style="margin-bottom:1rem">
+          <strong>Warning:</strong> Spread + commission as % of target is often 30-60% for scalpers. You MUST measure this BEFORE trading. Most retail brokers are not suitable for scalping.
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Support bounce + DOM shows buyers absorbing</span>
+          <span class="signal sell">SELL: Resistance rejection + speed increases on down move</span>
+          <span class="signal wait">REQUIRED: Spread must be &lt;15% of target</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Requirements</th></tr>
+          <tr><td>Platform</td><td>Direct access, Level 2, fast execution</td></tr>
+          <tr><td>Session</td><td>London open / NY open only (liquidity)</td></tr>
+          <tr><td>Instrument</td><td>EUR/USD, ES futures, most liquid only</td></tr>
+          <tr><td>Target</td><td>3-10 pips / ticks — defined before entry</td></tr>
+          <tr><td>Stop</td><td>Hard stop, never mental, auto-placed</td></tr>
+          <tr><td>Daily loss cap</td><td>2-3 losses max, then offline</td></tr>
+          <tr><td>Min experience</td><td>6+ months consistent swing trading first</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-swing" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Swing Trading</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Hold days to weeks. Align daily trigger with weekly structure. Overnight risk is real — size accordingly.</p>
+        <div class="info-box" style="margin-bottom:1rem">
+          <strong>Multi-Timeframe Approach:</strong><br>
+          Weekly: Define bias (bull/bear/range)<br>
+          Daily: Find S/R levels, pattern setup<br>
+          4H: Time entry, find trigger candle<br>
+          Entry: Execute with daily ATR-based stop
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Weekly uptrend + daily pullback to S + 4H hammer</span>
+          <span class="signal sell">SELL: Weekly downtrend + daily bounce to R + 4H shooting star</span>
+          <span class="signal wait">SIZE: Use 0.5-1% risk — overnight gaps are real</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Trade Template</th></tr>
+          <tr><td>Entry</td><td>4H trigger candle close or EOD</td></tr>
+          <tr><td>Stop</td><td>Below daily swing low/high + ATR buffer</td></tr>
+          <tr><td>Hold time</td><td>2-10 days typical</td></tr>
+          <tr><td>Target</td><td>Next weekly S/R or 2-3R</td></tr>
+          <tr><td>Trail</td><td>Chandelier stop or move to BE after 1R</td></tr>
+          <tr><td>Best markets</td><td>Stocks, FX, commodities</td></tr>
+          <tr><td>Gap management</td><td>Reduce size before earnings/key data</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-supply" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Supply & Demand Zones</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Trade from areas where institutional orders were placed. Look for the "origin" of strong moves — that's where unfilled orders remain.</p>
+        <div class="info-box purple" style="margin-bottom:1rem">
+          <strong>Zone Identification:</strong><br>
+          ① Find strong impulse move (3+ big candles)<br>
+          ② Mark the base before the move (1-3 candles)<br>
+          ③ Zone = High to low of that base<br>
+          ④ Fresh zones (untested) are strongest
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Price returns to demand zone + bullish trigger</span>
+          <span class="signal sell">SELL: Price returns to supply zone + bearish trigger</span>
+          <span class="signal wait">SKIP: Zones tested 2+ times (orders likely filled)</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Trade Template</th></tr>
+          <tr><td>Zone quality</td><td>Strong departure, fresh, in trend direction</td></tr>
+          <tr><td>Entry</td><td>Limit at zone edge or trigger candle</td></tr>
+          <tr><td>Stop</td><td>Beyond opposite zone edge</td></tr>
+          <tr><td>Target</td><td>Opposite zone or 2R minimum</td></tr>
+          <tr><td>Time decay</td><td>Old zones (30+ bars) lose strength</td></tr>
+          <tr><td>Best markets</td><td>Any, works especially well on indices</td></tr>
+          <tr><td>Combine with</td><td>Trend direction, Fibonacci levels</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="strat-fib" class="stab-content card">
+    <div class="grid-2">
+      <div>
+        <div style="font-weight:800;font-size:1.1rem;margin-bottom:0.75rem">Fibonacci Retracement</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem">Use mathematical ratios to find probable reversal zones. 38.2%, 50%, and 61.8% are the key levels.</p>
+        <div class="info-box" style="margin-bottom:1rem">
+          <strong>How to Draw Fibs:</strong><br>
+          ① Identify clear swing high and swing low<br>
+          ② In uptrend: draw from low to high<br>
+          ③ In downtrend: draw from high to low<br>
+          ④ Watch for confluence with S/R levels
+        </div>
+        <div style="display:grid;gap:0.5rem">
+          <span class="signal buy">BUY: Pullback to 61.8% + support + trigger candle</span>
+          <span class="signal sell">SELL: Rally to 61.8% + resistance + trigger candle</span>
+          <span class="signal wait">GOLDEN ZONE: 50%-61.8% = highest probability</span>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="2">Key Fibonacci Levels</th></tr>
+          <tr><td>23.6%</td><td>Shallow — strong trend continuation</td></tr>
+          <tr><td>38.2%</td><td>Normal pullback in strong trend</td></tr>
+          <tr><td>50.0%</td><td>Psychological level (not true Fib)</td></tr>
+          <tr><td>61.8%</td><td>Golden ratio — high probability reversal</td></tr>
+          <tr><td>78.6%</td><td>Deep retracement — trend may be failing</td></tr>
+          <tr><td>Extensions</td><td>127.2%, 161.8% for profit targets</td></tr>
+          <tr><td>Confluence</td><td>Fib + S/R + pattern = best setups</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- INDICATORS -->
+<section id="indicators" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Technical Tools</div>
+  <div class="section-title">Indicators — How Pros Use Them</div>
+  <p class="section-sub">Indicators are <em>derivatives of price</em>. Use them to confirm structure, not replace it. One primary + one volatility indicator is enough.</p>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="ind-card">
+      <div class="ind-title">📊 RSI (Relative Strength Index)</div>
+      <div class="ind-formula">RSI = 100 - (100 / (1 + RS))</div>
+      <p class="ind-use">Measures momentum. In trends, RSI can stay "extreme" for long periods — don't fade it alone.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BUY: &lt;30 + divergence + support candle</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">SELL: &gt;70 + divergence + resistance candle</span>
+        <span class="signal wait" style="display:block">WAIT: 40-60 zone with no clear structure</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">📉 MACD</div>
+      <div class="ind-formula">MACD = EMA(12) - EMA(26)</div>
+      <p class="ind-use">Trend/momentum hybrid. Histogram shows momentum decay — great for exit management, not entries alone.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BUY: Signal line cross up + uptrend structure</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">SELL: Signal line cross down + downtrend</span>
+        <span class="signal wait" style="display:block">AVOID: Crossovers in sideways markets = whipsaw</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">📏 ATR (Average True Range)</div>
+      <div class="ind-formula">ATR = avg(max(H-L, |H-Prev C|, |L-Prev C|))</div>
+      <p class="ind-use">Baseline volatility. Use for stop placement (1.5-2× ATR), position sizing, and detecting volatility regime changes.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">STOP = Entry - (1.5 × ATR)</span>
+        <span class="signal wait" style="display:block;margin-bottom:0.3rem">SIZE = Account Risk $ / (ATR × Point Value)</span>
+        <span class="signal sell" style="display:block">LOW ATR = Quiet market, expect expansion soon</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">〰️ Bollinger Bands</div>
+      <div class="ind-formula">Upper = SMA + (2 × StdDev)</div>
+      <p class="ind-use">Volatility envelope. Squeeze = volatility contraction before expansion. Touch ≠ automatic reversal.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BREAK: Squeeze breakout with volume</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">FADE: Band touch + reversal candle + ranging</span>
+        <span class="signal wait" style="display:block">WALKING THE BAND = trending, don't fade!</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">📈 Moving Averages</div>
+      <div class="ind-formula">EMA = Price × k + EMA_prev × (1-k)</div>
+      <p class="ind-use">Trend filter. Price vs 50/200 MA = macro regime. Use slope and location vs structure, not just crossovers.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BUY ZONE: Price above rising 50MA</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">SELL ZONE: Price below falling 50MA</span>
+        <span class="signal wait" style="display:block">FLAT MA = Range market, reduce size</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">📊 Volume</div>
+      <div class="ind-formula">Volume = Units traded in period</div>
+      <p class="ind-use">Validates breakouts on exchange-traded assets. Volume precedes price. High volume = conviction.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">CONFIRM: Breakout + volume &gt;150% avg</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">WARN: New high + declining volume</span>
+        <span class="signal wait" style="display:block">LOW VOLUME: Avoid new entries</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">🎯 ADX (Trend Strength)</div>
+      <div class="ind-formula">ADX = Smoothed DI movement</div>
+      <p class="ind-use">Measures trend strength, not direction. ADX > 25 = trending. ADX < 20 = ranging. Essential filter.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">TREND: ADX > 25 = use trend strategies</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">RANGE: ADX < 20 = use mean reversion</span>
+        <span class="signal wait" style="display:block">RISING ADX = Trend strengthening</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">📐 Stochastic</div>
+      <div class="ind-formula">%K = (C-L14)/(H14-L14) × 100</div>
+      <p class="ind-use">Momentum oscillator comparing close to range. Best in ranges. In trends, can stay overbought/oversold.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BUY: %K < 20 + cross up + support</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">SELL: %K > 80 + cross down + resistance</span>
+        <span class="signal wait" style="display:block">DIVERGENCE: Most reliable signal</span>
+      </div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-title">🔄 VWAP</div>
+      <div class="ind-formula">VWAP = Σ(Price × Volume) / ΣVolume</div>
+      <p class="ind-use">Volume-weighted average price. Institutional benchmark. Intraday traders use as dynamic S/R.</p>
+      <div class="ind-signal">
+        <span class="signal buy" style="display:block;margin-bottom:0.3rem">BUY: Price reclaims VWAP from below</span>
+        <span class="signal sell" style="display:block;margin-bottom:0.3rem">SELL: Price rejects VWAP from above</span>
+        <span class="signal wait" style="display:block">RESETS daily — intraday tool only</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box gold" style="margin-top:2rem">
+    <strong>⚠️ Indicator Reality Check:</strong> More indicators ≠ better trading. In fact, analysis paralysis from indicator overload is one of the top reasons traders fail. Pick 2-3 maximum. Master them. Ignore the rest.
+  </div>
+</div>
+</section>
+
+<!-- RISK -->
+<section id="risk" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Risk Management</div>
+  <div class="section-title">Position Size Calculator</div>
+  <p class="section-sub">The single most important calculation in trading. Never enter a position without knowing your max $ loss.</p>
+
+  <div class="grid-2" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:1.25rem">FX / Forex Calculator</div>
+      <div class="calc-row">
+        <div><div class="calc-label">Account ($)</div><input type="number" class="calc-input" id="fx-bal" value="10000" oninput="calcFX()"></div>
+        <div><div class="calc-label">Risk %</div><input type="number" class="calc-input" id="fx-pct" value="1" step="0.1" oninput="calcFX()"></div>
+        <div><div class="calc-label">Stop (pips)</div><input type="number" class="calc-input" id="fx-pips" value="20" oninput="calcFX()"></div>
+        <div><div class="calc-label">$/pip per lot</div><input type="number" class="calc-input" id="fx-pipval" value="10" oninput="calcFX()"></div>
+      </div>
+      <div class="calc-output" id="fx-out">—</div>
+      <div class="info-box" style="margin-top:1rem;font-size:0.75rem">
+        💡 <strong>Rule:</strong> Beginners risk 0.5–1% per trade. Experienced traders 1–2%. Never &gt;3%. Position size = $ Risk ÷ (Pips × $/pip per lot).
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:1.25rem">Stocks / Equities Calculator</div>
+      <div class="calc-row">
+        <div><div class="calc-label">Account ($)</div><input type="number" class="calc-input" id="eq-bal" value="10000" oninput="calcEQ()"></div>
+        <div><div class="calc-label">Risk %</div><input type="number" class="calc-input" id="eq-pct" value="1" step="0.1" oninput="calcEQ()"></div>
+        <div><div class="calc-label">Entry Price</div><input type="number" class="calc-input" id="eq-entry" value="100" oninput="calcEQ()"></div>
+        <div><div class="calc-label">Stop Price</div><input type="number" class="calc-input" id="eq-stop" value="97" oninput="calcEQ()"></div>
+      </div>
+      <div class="calc-output" id="eq-out">—</div>
+      <div class="info-box gold" style="margin-top:1rem;font-size:0.75rem">
+        💡 <strong>Shares:</strong> $ Risk ÷ (Entry − Stop). If stop is $97 and entry $100: $3 risk/share. With 1% of $10k = $100 risk → buy 33 shares max.
+      </div>
+    </div>
+  </div>
+
+  <!-- R-Multiple table -->
+  <div class="card" style="margin-top:1.25rem">
+    <div style="font-weight:700;margin-bottom:1rem">Why Expectancy > Win Rate</div>
+    <table>
+      <tr>
+        <th>Win Rate</th><th>Avg Win (R)</th><th>Avg Loss (R)</th><th>Expectancy</th><th>Result</th>
+      </tr>
+      <tr><td>40%</td><td>+3R</td><td>-1R</td><td style="color:var(--bull)">+0.6R</td><td style="color:var(--bull)">Profitable ✅</td></tr>
+      <tr><td>60%</td><td>+1R</td><td>-2R</td><td style="color:var(--bear)">-0.2R</td><td style="color:var(--bear)">Losing ❌</td></tr>
+      <tr><td>50%</td><td>+2R</td><td>-1R</td><td style="color:var(--bull)">+0.5R</td><td style="color:var(--bull)">Profitable ✅</td></tr>
+      <tr><td>33%</td><td>+4R</td><td>-1R</td><td style="color:var(--bull)">+0.67R</td><td style="color:var(--bull)">Profitable ✅</td></tr>
+      <tr><td>70%</td><td>+0.5R</td><td>-1R</td><td style="color:var(--bear)">-0.05R</td><td style="color:var(--bear)">Break-even ❌</td></tr>
+    </table>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem">Expectancy = (Win% × Avg Win) − (Loss% × Avg Loss). Track this over 30+ trades, not individual outcomes.</p>
+  </div>
+</div>
+</section>
+
+<!-- COMMON MISTAKES -->
+<section id="mistakes" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Learn From Others</div>
+  <div class="section-title">Top 12 Beginner Mistakes</div>
+  <p class="section-sub">Every one of these costs real money. Learn them here for free instead of paying the market to teach you.</p>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="mistake-card">
+      <div class="mistake-title">❌ No Stop Loss</div>
+      <div class="mistake-desc">Entering trades without a predetermined exit point. "I'll just watch it" always ends badly.</div>
+      <div class="mistake-fix">✅ FIX: Set stop loss BEFORE entry. Use ATR-based or structure-based stops. No exceptions.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Risking Too Much</div>
+      <div class="mistake-desc">Putting 10-20% of account on one trade. One bad trade can wipe weeks of gains.</div>
+      <div class="mistake-fix">✅ FIX: Risk 1% max per trade. After 10 losses (unlikely), you still have 90% of capital.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Overtrading</div>
+      <div class="mistake-desc">Taking 20+ trades per day out of boredom or need for action. Most are low-quality.</div>
+      <div class="mistake-fix">✅ FIX: Set a max trades/day limit (3-5). Quality over quantity. No trade = valid decision.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Revenge Trading</div>
+      <div class="mistake-desc">Immediately re-entering after a loss to "make it back." Emotions destroy accounts.</div>
+      <div class="mistake-fix">✅ FIX: Mandatory 30-min break after any loss. 2 losses = done for the day.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Moving Stop Losses</div>
+      <div class="mistake-desc">Widening stops to avoid getting stopped out. Turns small loss into catastrophic loss.</div>
+      <div class="mistake-fix">✅ FIX: Stop is set at entry. Only move it to lock in profits, NEVER to avoid loss.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Chasing Trades</div>
+      <div class="mistake-desc">Entering late after price has already moved significantly. FOMO buys tops, sells bottoms.</div>
+      <div class="mistake-fix">✅ FIX: Wait for pullbacks. If you missed it, you missed it. There's always another trade.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ No Trading Plan</div>
+      <div class="mistake-desc">Making decisions in the moment based on feelings. Inconsistent results guaranteed.</div>
+      <div class="mistake-fix">✅ FIX: Written plan: setups, entries, exits, risk rules. Trade the plan, review weekly.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Indicator Overload</div>
+      <div class="mistake-desc">10 indicators on chart = analysis paralysis. Conflicting signals, no action, or random action.</div>
+      <div class="mistake-fix">✅ FIX: Price action + one trend indicator + one volatility indicator. Maximum 3.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Averaging Down</div>
+      <div class="mistake-desc">Adding to losing positions hoping for recovery. Increases risk when you should be reducing it.</div>
+      <div class="mistake-fix">✅ FIX: Never add to losers. Only add to winners (scaling in) with predefined rules.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Trading News Blind</div>
+      <div class="mistake-desc">Being in positions during major announcements without awareness. Gaps and slippage destroy.</div>
+      <div class="mistake-fix">✅ FIX: Check economic calendar daily. Reduce size or close before high-impact events.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Ignoring Correlation</div>
+      <div class="mistake-desc">Long EUR/USD, GBP/USD, and AUD/USD = essentially one big USD short with 3x risk.</div>
+      <div class="mistake-fix">✅ FIX: Understand correlations. Limit exposure to any single theme/currency/sector.</div>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-title">❌ Skipping Demo</div>
+      <div class="mistake-desc">Going live before proving profitability on demo. Paying tuition to the market unnecessarily.</div>
+      <div class="mistake-fix">✅ FIX: 30+ demo trades with positive expectancy before ANY live trading. Non-negotiable.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Execution</div>
+  <div class="section-title">Pre-Trade & Post-Trade Routines</div>
+  <p class="section-sub">If any pre-trade item is "no," the default is NO TRADE. No exceptions.</p>
+
+  <div class="grid-2" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem">
+        ✅ Pre-Trade Checklist <span style="font-size:0.65rem;color:var(--muted);font-family:var(--font-mono)">(saves locally)</span>
+      </div>
+      <div class="check-list">
+        <div class="check-item"><input type="checkbox" id="p0" onchange="saveChecks()"><label for="p0">I am inside my planned trading session window</label></div>
+        <div class="check-item"><input type="checkbox" id="p1" onchange="saveChecks()"><label for="p1">Daily loss limit not breached — max trades not hit</label></div>
+        <div class="check-item"><input type="checkbox" id="p2" onchange="saveChecks()"><label for="p2">This setup is explicitly in my written trading plan</label></div>
+        <div class="check-item"><input type="checkbox" id="p3" onchange="saveChecks()"><label for="p3">Higher-timeframe bias aligns with direction</label></div>
+        <div class="check-item"><input type="checkbox" id="p4" onchange="saveChecks()"><label for="p4">Stop loss price & $ risk calculated before entry</label></div>
+        <div class="check-item"><input type="checkbox" id="p5" onchange="saveChecks()"><label for="p5">I know my invalidation level (structure/pattern break)</label></div>
+        <div class="check-item"><input type="checkbox" id="p6" onchange="saveChecks()"><label for="p6">Checked economic calendar — no major news in 30 min</label></div>
+        <div class="check-item"><input type="checkbox" id="p7" onchange="saveChecks()"><label for="p7">Spread is normal for this instrument right now</label></div>
+        <div class="check-item"><input type="checkbox" id="p8" onchange="saveChecks()"><label for="p8">I am NOT trading to recover a prior loss</label></div>
+        <div class="check-item"><input type="checkbox" id="p9" onchange="saveChecks()"><label for="p9">I can state my thesis in one sentence out loud</label></div>
+      </div>
+      <button onclick="clearChecks()" class="btn-ghost" style="margin-top:1rem;font-size:0.72rem">Clear Checks</button>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:1rem">📋 Post-Trade Review (every single trade)</div>
+      <ol style="list-style:decimal;padding-left:1.25rem;display:grid;gap:0.75rem">
+        <li style="font-size:0.82rem;line-height:1.6">Did price action after exit validate or invalidate my thesis?</li>
+        <li style="font-size:0.82rem;line-height:1.6">Did I follow my plan exactly — entry, size, stop, exit?</li>
+        <li style="font-size:0.82rem;line-height:1.6">Emotion tag at entry and exit (1=calm, 5=panic/FOMO)?</li>
+        <li style="font-size:0.82rem;line-height:1.6">Was the outcome driven by skill (process) or luck (variance)?</li>
+        <li style="font-size:0.82rem;line-height:1.6">One thing to repeat. One thing to eliminate next time.</li>
+      </ol>
+      <div class="info-box" style="margin-top:1rem;font-size:0.75rem">
+        📖 <strong>Journal Rule:</strong> Screenshot + reason + stop + target + emotion tag. Never change your system from one trade. Review batches of 20-30 at minimum.
+      </div>
+      <div class="info-box danger" style="margin-top:0.75rem;font-size:0.75rem">
+        🛑 <strong>Kill Switches:</strong> 2 losses in a row → 30 min break. Daily cap hit → flat and offline. Revenge urge detected → close all platforms.
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PSYCHOLOGY -->
+<section id="psychology" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Trader Mindset</div>
+  <div class="section-title">The Psychology Edge</div>
+  <p class="section-sub">90% of traders fail because of psychology, not strategy. The market exploits emotional weaknesses systematically.</p>
+
+  <div class="quote-box">
+    <div class="quote-text">"If you can learn to create a state of mind that is not affected by the market's behavior, the struggle will cease to exist."</div>
+    <div class="quote-author">— Mark Douglas, Trading in the Zone</div>
+  </div>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">😰</div>
+      <div style="font-weight:700;margin-bottom:0.5rem;color:var(--bear)">Fear Traps</div>
+      <ul style="list-style:none;display:grid;gap:0.5rem">
+        <li style="font-size:0.8rem;color:var(--muted)">• Exiting winners too early</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Hesitating on valid setups</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Over-reducing size after losses</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Avoiding a market after one bad trade</li>
+      </ul>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--accent)">Fix: Process focus over outcome focus.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">🤑</div>
+      <div style="font-weight:700;margin-bottom:0.5rem;color:var(--gold)">Greed Traps</div>
+      <ul style="list-style:none;display:grid;gap:0.5rem">
+        <li style="font-size:0.8rem;color:var(--muted)">• Adding size after winners</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Moving targets further away</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Trading after daily target hit</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• FOMO entries after big moves</li>
+      </ul>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--gold)">Fix: Written profit target. When hit = done.</div>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">😤</div>
+      <div style="font-weight:700;margin-bottom:0.5rem;color:var(--bear)">Revenge Trading</div>
+      <ul style="list-style:none;display:grid;gap:0.5rem">
+        <li style="font-size:0.8rem;color:var(--muted)">• Entering immediately after stop-out</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Increasing size to "make it back"</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Abandoning rules in frustration</li>
+        <li style="font-size:0.8rem;color:var(--muted)">• Trading outside normal hours</li>
+      </ul>
+      <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--bear)">Fix: Physical kill switch — close platform.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:2rem">
+    <div style="font-weight:700;margin-bottom:1rem">Daily Mental Routine</div>
+    <div class="grid-3" style="gap:1rem">
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.5rem">BEFORE SESSION</div>
+        <ul style="list-style:none;display:grid;gap:0.3rem">
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Write your 2-3 scenarios on paper</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Set daily loss limit in broker account</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Check calendar for high-impact events</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Rate your mental state 1-10</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ If below 6/10: no trading today</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:0.5rem">DURING SESSION</div>
+        <ul style="list-style:none;display:grid;gap:0.3rem">
+          <li style="font-size:0.78rem;color:var(--muted)">✓ One playbook only per session</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Checklist before every entry</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Journal immediately after each trade</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ 2 losses = mandatory break</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ No chart watching when flat</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.5rem">AFTER SESSION</div>
+        <ul style="list-style:none;display:grid;gap:0.3rem">
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Complete post-trade review</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Screenshot annotation</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Update stats sheet (R-multiple)</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Note one rule violation honestly</li>
+          <li style="font-size:0.78rem;color:var(--muted)">✓ Disconnect — market will be there tomorrow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RECOMMENDED BOOKS -->
+<section id="books" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Education</div>
+  <div class="section-title">Must-Read Trading Books</div>
+  <p class="section-sub">These books have shaped generations of successful traders. Read them in order for maximum benefit.</p>
+
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📕</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Trading in the Zone</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Mark Douglas</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">The definitive book on trading psychology. Explains why we sabotage ourselves and how to develop a probability mindset.</p>
+      <div class="signal buy" style="margin-top:0.75rem;font-size:0.65rem">START HERE</div>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📗</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Japanese Candlestick Charting</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Steve Nison</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">The original Western introduction to candlestick patterns. Comprehensive coverage of all major patterns with context.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📘</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Technical Analysis of Financial Markets</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">John Murphy</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">The encyclopedia of technical analysis. Every indicator, pattern, and concept explained. Reference book for career.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📙</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Market Wizards</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Jack Schwager</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">Interviews with the world's best traders. Learn what actually works from those who've done it. Endlessly inspiring.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📓</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Trade Your Way to Financial Freedom</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Van Tharp</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">Position sizing, expectancy, R-multiples — all explained here. The math of trading that most ignore.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📔</div>
+      <div style="font-weight:700;margin-bottom:0.3rem">Reminiscences of a Stock Operator</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.75rem">Edwin Lefèvre</div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.6">Biography of Jesse Livermore. 100 years old, still relevant. Human nature in markets never changes.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Questions</div>
+  <div class="section-title">Frequently Asked Questions</div>
+
+  <div class="card" style="margin-top:2rem">
+    <details class="faq" open><summary>How much money do I need to start trading?</summary><p>You only need enough to properly size positions with 0.5–1% risk per trade. For forex with a $1,000 account and 20-pip stop: you'd need micro lots. More important than account size is trading money you can lose entirely — it's tuition. Paper trade until your process is consistent first.</p></details>
+    <details class="faq"><summary>What win rate do I need to be profitable?</summary><p>Win rate alone is meaningless. A 40% win rate can be very profitable if average wins are 3× average losses. Track Expectancy = (Win% × Avg Win R) − (Loss% × Avg Loss R). Target positive expectancy over 30+ trades. Focus on R-multiples, not win rate.</p></details>
+    <details class="faq"><summary>Should I buy or sell this signal?</summary><p>No one can tell you this reliably. Signals work in context: the same candle pattern at support in an uptrend is very different from the same pattern in a downtrend at resistance. Learn the framework: Context (HTF trend) → Location (S/R) → Trigger (pattern) → Risk (stop/size).</p></details>
+    <details class="faq"><summary>How long until I'm consistently profitable?</summary><p>Budget 1–3 years for most traders working at it seriously. The learning curve has phases: platform → risk → one setup → process → psychology → scaling. Most failures happen because people try to skip phases.</p></details>
+    <details class="faq"><summary>Are paid signal services worth it?</summary><p>If you don't understand why a signal fires, you can't manage the trade when it goes against you. The most important skill is reading your own charts. Use third-party content for education only, never as a replacement for your own process.</p></details>
+    <details class="faq"><summary>What timeframe should I trade?</summary><p>Start with the daily chart — it filters noise and each bar takes 24 hours to form, forcing patience. Once your setup works on daily, learn the 4H for entries. Never start with tick charts or 1-min — you'll overtrade and over-optimize.</p></details>
+    <details class="faq"><summary>Why do patterns sometimes fail?</summary><p>Because markets are probabilistic, not deterministic. Patterns fail when: (1) context is wrong (counter-trend), (2) at wrong location (middle of range, not S/R), (3) confirmation never happened, or (4) a larger force (news, big player) overrides the pattern.</p></details>
+    <details class="faq"><summary>Is trading gambling?</summary><p>Without an edge, yes. With a tested strategy, proper risk management, and disciplined execution, trading is a probability game with positive expected value — like being the house in a casino, not a gambler. The difference is in your approach.</p></details>
+  </div>
+</div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary" class="section-pad" style="padding-top:3rem">
+<div class="container">
+  <div class="section-kicker">Reference</div>
+  <div class="section-title">Trading Glossary</div>
+  <div class="gloss-grid">
+    <div class="gloss-item"><div class="gloss-term">Bid / Ask</div><div class="gloss-def">Bid = buyers' price. Ask = sellers' price. You buy at ask, sell at bid. The gap is the spread — your immediate cost.</div></div>
+    <div class="gloss-item"><div class="gloss-term">R-Multiple</div><div class="gloss-def">Result expressed in units of initial risk. +2R means you made twice your risk. Track all trades in R to normalize different position sizes.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Expectancy</div><div class="gloss-def">Average R per trade across a large sample. Positive expectancy = system has edge after costs.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Drawdown</div><div class="gloss-def">Peak-to-trough decline in account equity. Max drawdown tells you the worst historical loss streak.</div></div>
+    <div class="gloss-item"><div class="gloss-term">ATR</div><div class="gloss-def">Average True Range — average daily (or period) volatility. Used to set stops and normalize position sizing.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Higher Timeframe (HTF)</div><div class="gloss-def">The chart above your trading timeframe. Always trade with HTF bias — counter-trend trades require skill.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Support / Resistance</div><div class="gloss-def">Price levels where buyers (support) or sellers (resistance) previously entered in force.</div></div>
+    <div class="gloss-item"><div class="gloss-term">HH / HL / LH / LL</div><div class="gloss-def">Higher High/Higher Low = uptrend. Lower High/Lower Low = downtrend. Three consecutive HH/HL confirms a trend.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Pip</div><div class="gloss-def">Price Interest Point — smallest standard price move in FX. EUR/USD: 0.0001 = 1 pip.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Lot Size</div><div class="gloss-def">Standard lot = 100,000 units. Mini = 10,000. Micro = 1,000. Start with micros.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Margin / Leverage</div><div class="gloss-def">Margin is collateral. Leverage amplifies gains AND losses equally — it does not improve your edge.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Slippage</div><div class="gloss-def">Difference between expected and actual execution price. Common during news or low liquidity.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Liquidity</div><div class="gloss-def">How easily you can enter/exit without moving price. High liquidity = tight spreads, fast fills.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Volatility</div><div class="gloss-def">How much price moves. High volatility = bigger swings, wider stops needed, more opportunity and risk.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Confluence</div><div class="gloss-def">Multiple factors aligning at one price. S/R + pattern + Fib + MA = high confluence = higher probability.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Divergence</div><div class="gloss-def">Price makes new high/low but indicator doesn't confirm. Signals potential reversal.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- DISCLAIMER -->
+<section style="padding:2rem 0 4rem">
+<div class="container">
+  <div class="card" style="border-color:rgba(245,158,11,0.2)">
+    <div style="font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;color:var(--gold)">⚠️ Important Disclosures</div>
+    <p style="font-size:0.75rem;color:var(--muted);line-height:1.7">This website is <strong>educational only</strong>. Nothing here constitutes investment, financial, tax, or legal advice. Trading and investing carry substantial risk of loss — including losses exceeding your initial deposit where leverage is involved. Past performance and historical patterns do not guarantee future results. All charts and data on this page are <strong>synthetic/demo only</strong> and do not represent real market prices. Signals and patterns shown are for educational illustration. Consult a licensed financial professional before making investment decisions.</p>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div>
+    <div class="footer-brand">Trading Mastery Pro</div>
+    <p class="footer-legal">Free educational resource. Not a broker. Not financial advice. All patterns and charts are for learning purposes only.</p>
+    <p class="footer-legal" style="margin-top:0.5rem">© <span id="yr"></span> Trading Mastery Pro</p>
+  </div>
+  <div class="footer-links">
+    <h4>Sections</h4>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#markets">Markets</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#live-chart">Live Chart</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#strategies">Strategies</a>
+    <a href="#risk">Risk Calculator</a>
+  </div>
+  <div class="footer-links">
+    <h4>Reference</h4>
+    <a href="#indicators">Indicators</a>
+    <a href="#mistakes">Common Mistakes</a>
+    <a href="#psychology">Psychology</a>
+    <a href="#books">Books</a>
+    <a href="#faq">FAQ</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#top">Back to Top ↑</a>
+  </div>
+</div>
+</footer>
+
+<script>
+// ── YEAR ──
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ── TICKER ──
+const tickerData = [
+  {sym:'EUR/USD', price:'1.0854', chg:'+0.12%', pos:true},
+  {sym:'GBP/USD', price:'1.2701', chg:'-0.08%', pos:false},
+  {sym:'USD/JPY', price:'149.32', chg:'+0.23%', pos:true},
+  {sym:'SPX', price:'5123.41', chg:'+0.54%', pos:true},
+  {sym:'NAS100', price:'17892.1', chg:'+0.81%', pos:true},
+  {sym:'GOLD', price:'2341.5', chg:'+0.19%', pos:true},
+  {sym:'OIL', price:'82.34', chg:'-0.43%', pos:false},
+  {sym:'BTC/USD', price:'67412', chg:'+1.24%', pos:true},
+  {sym:'ETH/USD', price:'3487', chg:'+0.67%', pos:true},
+  {sym:'DXY', price:'104.21', chg:'-0.11%', pos:false},
+];
+const tickerEl = document.getElementById('tickerInner');
+[...tickerData, ...tickerData].forEach(t => {
+  tickerEl.innerHTML += `<span class="ticker-item"><span class="ticker-sym">${t.sym}</span><span>${t.price}</span><span class="ticker-chg ${t.pos?'pos':'neg'}">${t.chg}</span></span>`;
+});
+
+// ── ROADMAP ──
+const ROADMAP = [
+  {t:'Learn the platform cold', d:'Open every menu: order types, margin report, P&L, history. Place and cancel demo orders until mechanical.'},
+  {t:'Memorize the quote', d:'Bid, ask, spread, last, size. Know exactly what you pay to enter and exit.'},
+  {t:'One market, one timeframe', d:'e.g. EUR/USD 1H or one liquid stock on daily. Ignore all others until you have stats.'},
+  {t:'Write a one-page trading plan', d:'Allowed setups, sessions, max daily loss %, max trades/day, and what you will NOT trade.'},
+  {t:'Master position sizing', d:'Use the calculator until you can compute risk→size in your head.'},
+  {t:'Mark structure on 20 charts', d:'Swing highs/lows, obvious S/R, trend vs range. No trades yet — just labeling.'},
+  {t:'One playbook for 2 weeks', d:'e.g. trend pullback OR breakout retest. Decline all other signals for 14 days.'},
+  {t:'Journal 30 demo trades', d:'Screenshot + reason + stop + target + emotion tag. Compute average R and rule violations.'},
+  {t:'News & calendar drill', d:'Pick 3 high-impact events. Observe the reaction without trading.'},
+  {t:'Define your kill switches', d:'2 losses → break; daily loss cap → flat; tilt detected → log off.'},
+  {t:'Go live at minimum size', d:'Same rules as demo. Expect worse execution and emotions — prove process, not P&L.'},
+  {t:'Weekly review ritual', d:'Sunday: stats, one rule to tighten, one mistake to watch next week.'},
+];
+function buildRoadmap() {
+  const saved = localStorage.getItem('tmp-rm') || '';
+  const el = document.getElementById('roadmapList');
+  el.innerHTML = '';
+  ROADMAP.forEach((r, i) => {
+    const checked = saved[i] === '1';
+    el.innerHTML += `<div class="roadmap-item">
+      <div class="roadmap-num ${checked?'done':''}">${i+1}</div>
+      <input type="checkbox" class="roadmap-check" id="rm${i}" ${checked?'checked':''} onchange="saveRoadmap()">
+      <div><div class="roadmap-title">${r.t}</div><div class="roadmap-desc">${r.d}</div></div>
+    </div>`;
+  });
+  updateRoadmapProgress();
+}
+function saveRoadmap() {
+  let bits = '';
+  ROADMAP.forEach((_, i) => { bits += document.getElementById('rm'+i).checked ? '1' : '0'; });
+  localStorage.setItem('tmp-rm', bits);
+  updateRoadmapProgress();
+}
+function updateRoadmapProgress() {
+  const saved = localStorage.getItem('tmp-rm') || '';
+  let n = 0; for (let i=0; i<12; i++) if(saved[i]==='1') n++;
+  document.getElementById('roadmapFill').style.width = Math.round(n/12*100) + '%';
+  document.getElementById('roadmapPct').textContent = n + ' / 12 steps complete';
+}
+function resetRoadmap() { if(!confirm('Reset all progress?')) return; localStorage.removeItem('tmp-rm'); buildRoadmap(); }
+buildRoadmap();
+
+// ── CHECKLIST ──
+function saveChecks() {
+  let bits = '';
+  for(let i=0;i<10;i++) bits += document.getElementById('p'+i)?.checked ? '1':'0';
+  localStorage.setItem('tmp-chk', bits);
+}
+function clearChecks() { localStorage.removeItem('tmp-chk'); for(let i=0;i<10;i++){const el=document.getElementById('p'+i);if(el)el.checked=false;} }
+(function loadChecks() {
+  const s = localStorage.getItem('tmp-chk')||'';
+  for(let i=0;i<10;i++){const el=document.getElementById('p'+i);if(el)el.checked=s[i]==='1';}
+})();
+
+// ── CALCULATORS ──
+function calcFX() {
+  const bal = +document.getElementById('fx-bal').value||0;
+  const pct = +document.getElementById('fx-pct').value||0;
+  const pips = +document.getElementById('fx-pips').value||1;
+  const pipv = +document.getElementById('fx-pipval').value||1;
+  const riskUsd = bal*(pct/100);
+  const lots = riskUsd/(pips*pipv);
+  document.getElementById('fx-out').textContent =
+    `Risk $${riskUsd.toFixed(2)} → ${lots.toFixed(3)} lots  (${(lots*100000).toFixed(0)} units)`;
+}
+calcFX();
+function calcEQ() {
+  const bal = +document.getElementById('eq-bal').value||0;
+  const pct = +document.getElementById('eq-pct').value||0;
+  const entry = +document.getElementById('eq-entry').value||0;
+  const stop = +document.getElementById('eq-stop').value||0;
+  if(!entry||!stop||entry<=stop){document.getElementById('eq-out').textContent='Check entry > stop price';return;}
+  const riskUsd = bal*(pct/100);
+  const riskPerShare = entry-stop;
+  const shares = Math.floor(riskUsd/riskPerShare);
+  document.getElementById('eq-out').textContent =
+    `Risk $${riskUsd.toFixed(2)} → Buy ${shares} shares @ $${entry}`;
+}
+calcEQ();
+
+// ── STRATEGIES ──
+function showStrat(name, btn) {
+  document.querySelectorAll('.stab-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(e=>e.classList.remove('active'));
+  document.getElementById('strat-'+name)?.classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── CANDLE PATTERN DRAWING ENGINE ──
+const BULL_COL = '#00d4aa';
+const BEAR_COL = '#ff4d6d';
+const BG_COL = '#111820';
+const WICK_W = 1.5;
+
+function drawCandle(ctx, x, yOpen, yClose, yHigh, yLow, bull, w) {
+  const col = bull ? BULL_COL : BEAR_COL;
+  ctx.strokeStyle = col; ctx.lineWidth = WICK_W;
+  ctx.beginPath(); ctx.moveTo(x, yHigh); ctx.lineTo(x, yLow); ctx.stroke();
+  const bodyTop = Math.min(yOpen, yClose);
+  const bodyBot = Math.max(yOpen, yClose);
+  const bodyH = Math.max(bodyBot - bodyTop, 2);
+  ctx.fillStyle = bull ? 'rgba(0,212,170,0.85)' : 'rgba(255,77,109,0.85)';
+  ctx.strokeStyle = col; ctx.lineWidth = 1;
+  ctx.fillRect(x - w/2, bodyTop, w, bodyH);
+  ctx.strokeRect(x - w/2, bodyTop, w, bodyH);
+}
+
+function scaleCandles(data, W, H, pad) {
+  const vals = data.flatMap(d => [d.o, d.h, d.l, d.c]);
+  const min = Math.min(...vals), max = Math.max(...vals);
+  const range = max - min || 0.001;
+  function sy(v) { return pad + (1 - (v - min) / range) * (H - pad*2); }
+  return { sy, min, max };
+}
+
+function renderCandlePattern(canvas, candles) {
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = BG_COL;
+  ctx.fillRect(0, 0, W, H);
+  const pad = 12;
+  const n = candles.length;
+  const { sy } = scaleCandles(candles, W, H, pad);
+  const slotW = (W - pad*2) / n;
+  const bodyW = Math.min(slotW * 0.55, 18);
+  candles.forEach((c, i) => {
+    const x = pad + (i + 0.5) * slotW;
+    drawCandle(ctx, x, sy(c.o), sy(c.c), sy(c.h), sy(c.l), c.c >= c.o, bodyW);
+  });
+}
+
+// ── PATTERN DATA ──
+const PATTERNS = [
+  {
+    name: 'Bullish Engulfing', bias: 'bullish',
+    candles: [{o:1.08,h:1.09,l:1.07,c:1.075},{o:1.078,h:1.085,l:1.072,c:1.076},{o:1.076,h:1.077,l:1.069,c:1.071},{o:1.068,h:1.082,l:1.067,c:1.081}],
+    action: 'Long above engulfing candle high. Stop below pattern low.',
+    confirm: 'Candle closes above entire prior candle body at support',
+    invalid: 'Price trades back through the engulfed candle\'s low on a close',
+    notes: 'Stronger with elevated volume. Best at clear S/R level.'
+  },
+  {
+    name: 'Bearish Engulfing', bias: 'bearish',
+    candles: [{o:1.07,h:1.073,l:1.068,c:1.072},{o:1.072,h:1.078,l:1.071,c:1.074},{o:1.074,h:1.081,l:1.073,c:1.079},{o:1.082,h:1.083,l:1.068,c:1.069}],
+    action: 'Short on break of engulfing low. Stop above pattern high.',
+    confirm: 'Candle closes below entire prior bullish candle at resistance',
+    invalid: 'Reclaim above the engulfing candle\'s high on close',
+    notes: 'In strong uptrend, treat as caution not reversal.'
+  },
+  {
+    name: 'Hammer', bias: 'bullish',
+    candles: [{o:1.08,h:1.082,l:1.075,c:1.079},{o:1.079,h:1.08,l:1.074,c:1.077},{o:1.077,h:1.078,l:1.066,c:1.0775}],
+    action: 'Long above hammer high after micro pullback. Stop under wick.',
+    confirm: 'Long lower wick (≥2× body), small body at top, after downtrend',
+    invalid: 'Close below hammer low',
+    notes: 'Same shape as hanging man — location determines bias.'
+  },
+  {
+    name: 'Shooting Star', bias: 'bearish',
+    candles: [{o:1.07,h:1.073,l:1.069,c:1.072},{o:1.072,h:1.078,l:1.071,c:1.076},{o:1.076,h:1.087,l:1.075,c:1.0765}],
+    action: 'Short on break of star low. Stop above wick high.',
+    confirm: 'Small body at bottom, long upper wick (≥2× body) at resistance',
+    invalid: 'High taken out with strong close above',
+    notes: 'Best at clear resistance with HTF alignment.'
+  },
+  {
+    name: 'Doji', bias: 'neutral',
+    candles: [{o:1.075,h:1.078,l:1.072,c:1.074},{o:1.074,h:1.077,l:1.071,c:1.0755},{o:1.0755,h:1.082,l:1.069,c:1.0755}],
+    action: 'Trade the BREAK of the doji range. Long above high, short below low.',
+    confirm: 'Open ≈ close with wicks — indecision between buyers and sellers',
+    invalid: 'Choppy inside range with no expansion',
+    notes: 'Don\'t trade the doji itself. Signals potential trend exhaustion.'
+  },
+  {
+    name: 'Morning Star', bias: 'bullish',
+    candles: [{o:1.082,h:1.084,l:1.079,c:1.08},{o:1.079,h:1.081,l:1.073,c:1.074},{o:1.073,h:1.074,l:1.071,c:1.071},{o:1.069,h:1.078,l:1.068,c:1.077}],
+    action: 'Long after strong 3rd candle closes. Stop below star cluster low.',
+    confirm: '3-candle reversal: big bear, small star, strong bull (closes >50% into first)',
+    invalid: 'Full retracement of the third (bull) candle',
+    notes: 'Volume on 3rd candle confirms. Classic bottom reversal.'
+  },
+  {
+    name: 'Evening Star', bias: 'bearish',
+    candles: [{o:1.068,h:1.069,l:1.065,c:1.068},{o:1.069,h:1.074,l:1.068,c:1.073},{o:1.073,h:1.077,l:1.072,c:1.0755},{o:1.077,h:1.078,l:1.068,c:1.069}],
+    action: 'Short after 3rd candle closes. Stop above star high.',
+    confirm: 'Mirror of morning star at highs: strong bull, small star, strong bear',
+    invalid: 'New highs on strong momentum after star',
+    notes: 'Combine with RSI divergence for higher probability.'
+  },
+  {
+    name: 'Three White Soldiers', bias: 'bullish',
+    candles: [{o:1.066,h:1.07,l:1.065,c:1.069},{o:1.069,h:1.074,l:1.068,c:1.0735},{o:1.0735,h:1.079,l:1.073,c:1.078},{o:1.078,h:1.084,l:1.077,c:1.083}],
+    action: 'Trend continuation. Add on shallow pullback.',
+    confirm: 'Three strong bullish closes, each opening within previous body',
+    invalid: 'Long upper wicks on 3rd candle, or immediate reversal',
+    notes: 'Manage with trailing stop. Often signals trend beginning.'
+  },
+  {
+    name: 'Three Black Crows', bias: 'bearish',
+    candles: [{o:1.082,h:1.084,l:1.078,c:1.079},{o:1.079,h:1.08,l:1.073,c:1.074},{o:1.074,h:1.075,l:1.068,c:1.069},{o:1.069,h:1.07,l:1.063,c:1.064}],
+    action: 'Short continuation. Exit longs on bounces.',
+    confirm: 'Three strong bearish closes, each opening within previous body',
+    invalid: 'Strong bullish reversal engulfing the 3rd crow',
+    notes: 'Verify not into major support without a plan.'
+  },
+  {
+    name: 'Piercing Pattern', bias: 'bullish',
+    candles: [{o:1.079,h:1.081,l:1.074,c:1.075},{o:1.075,h:1.077,l:1.069,c:1.07},{o:1.069,h:1.079,l:1.068,c:1.0775}],
+    action: 'Long on next candle open. Stop below the second candle low.',
+    confirm: 'Down candle then up candle closing >50% into prior body',
+    invalid: 'Failure to hold midpoint on subsequent close',
+    notes: 'Wait for close. Less aggressive than engulfing.'
+  },
+  {
+    name: 'Dark Cloud Cover', bias: 'bearish',
+    candles: [{o:1.071,h:1.073,l:1.069,c:1.072},{o:1.072,h:1.076,l:1.071,c:1.075},{o:1.077,h:1.079,l:1.071,c:1.0725}],
+    action: 'Protect longs, short only on confirmation breakdown.',
+    confirm: 'Up candle then down candle closing <50% into prior body at resistance',
+    invalid: 'Reacceptance above cloud candle high',
+    notes: 'Needs follow-through. Less aggressive than engulfing.'
+  },
+  {
+    name: 'Dragonfly Doji', bias: 'bullish',
+    candles: [{o:1.079,h:1.08,l:1.073,c:1.079},{o:1.079,h:1.08,l:1.071,c:1.079},{o:1.079,h:1.084,l:1.078,c:1.083}],
+    action: 'Long on high break after downtrend. Stop under wick low.',
+    confirm: 'Long lower wick, open/close at or near session high',
+    invalid: 'New lows without bullish response',
+    notes: 'Similar playbook to hammer. Best at support after downtrend.'
+  },
+  {
+    name: 'Gravestone Doji', bias: 'bearish',
+    candles: [{o:1.072,h:1.073,l:1.07,c:1.072},{o:1.072,h:1.073,l:1.071,c:1.072},{o:1.072,h:1.081,l:1.072,c:1.072},{o:1.072,h:1.073,l:1.066,c:1.067}],
+    action: 'Short on break below low. Stop above wick.',
+    confirm: 'Long upper wick, open/close at or near session low after uptrend',
+    invalid: 'Strong move above wick with close',
+    notes: 'Stronger at resistance with HTF alignment.'
+  },
+  {
+    name: 'Bullish Harami', bias: 'bullish',
+    candles: [{o:1.082,h:1.084,l:1.078,c:1.079},{o:1.079,h:1.08,l:1.071,c:1.072},{o:1.073,h:1.075,l:1.072,c:1.0745}],
+    action: 'Long on confirmation candle closing above parent body high.',
+    confirm: 'Small candle body fully inside prior bear candle body',
+    invalid: 'Lower low after harami — continuation failed',
+    notes: 'Weaker than engulfing. Patience required for confirmation.'
+  },
+  {
+    name: 'Bearish Harami', bias: 'bearish',
+    candles: [{o:1.07,h:1.071,l:1.068,c:1.071},{o:1.071,h:1.078,l:1.07,c:1.077},{o:1.076,h:1.078,l:1.074,c:1.0755}],
+    action: 'Short on break of parent candle low for confirmation.',
+    confirm: 'Small candle body fully inside prior bull candle body at resistance',
+    invalid: 'Reclaim and close above parent high',
+    notes: 'Often a pause, not a reversal. Context is everything.'
+  },
+  {
+    name: 'Inside Bar', bias: 'neutral',
+    candles: [{o:1.072,h:1.08,l:1.07,c:1.078},{o:1.076,h:1.079,l:1.072,c:1.074},{o:1.074,h:1.084,l:1.073,c:1.082}],
+    action: 'Long above mother bar high OR short below low — trade with trend.',
+    confirm: 'Second candle fully within first (mother bar) range',
+    invalid: 'False break then reversal',
+    notes: 'Common on daily charts. Trade in direction of HTF trend.'
+  },
+  {
+    name: 'Spinning Top', bias: 'neutral',
+    candles: [{o:1.075,h:1.079,l:1.071,c:1.077},{o:1.077,h:1.083,l:1.073,c:1.0775},{o:1.0775,h:1.083,l:1.072,c:1.0775}],
+    action: 'Wait for range break. Bracket and trade the breakout.',
+    confirm: 'Small body, long wicks both sides — battle ended in draw',
+    invalid: 'Continued chop inside range',
+    notes: 'Often precedes volatility expansion.'
+  },
+  {
+    name: 'Tweezer Top', bias: 'bearish',
+    candles: [{o:1.074,h:1.08,l:1.073,c:1.079},{o:1.08,h:1.083,l:1.079,c:1.082},{o:1.082,h:1.083,l:1.075,c:1.0765}],
+    action: 'Fade failure at high with stop above the two equal highs.',
+    confirm: 'Two consecutive candles with same highs at resistance',
+    invalid: 'Clean breakout and hold above twin highs',
+    notes: 'Stronger when second candle is bearish.'
+  },
+  {
+    name: 'Tweezer Bottom', bias: 'bullish',
+    candles: [{o:1.079,h:1.081,l:1.072,c:1.073},{o:1.073,h:1.075,l:1.072,c:1.074},{o:1.074,h:1.081,l:1.073,c:1.08}],
+    action: 'Long on reclaim of pattern highs. Stop below twin lows.',
+    confirm: 'Two consecutive candles with same lows at support',
+    invalid: 'Liquidity sweep then continuation down',
+    notes: 'Pair with structure support. Two failed attempts at lows.'
+  },
+  {
+    name: 'Hanging Man', bias: 'bearish',
+    candles: [{o:1.068,h:1.072,l:1.067,c:1.071},{o:1.071,h:1.076,l:1.07,c:1.074},{o:1.074,h:1.078,l:1.073,c:1.077},{o:1.077,h:1.079,l:1.068,c:1.0785}],
+    action: 'Tighten stops on longs. Short on break below pattern low.',
+    confirm: 'Hammer-shaped candle after advance, at resistance',
+    invalid: 'New highs immediately without stalling',
+    notes: 'Needs bearish confirmation candle.'
+  },
+  {
+    name: 'Inverted Hammer', bias: 'bullish',
+    candles: [{o:1.082,h:1.084,l:1.078,c:1.08},{o:1.08,h:1.079,l:1.074,c:1.075},{o:1.075,h:1.085,l:1.074,c:1.0755}],
+    action: 'Wait for follow-through candle closing higher. Enter above it.',
+    confirm: 'Long upper wick in downtrend — buyers attempted to push higher',
+    invalid: 'Immediate breakdown below pattern low',
+    notes: 'Needs confirmation — next candle is the real signal.'
+  },
+];
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+function filterCandles(type, btn, val) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','bear-active','wait-active'));
+  if (btn) {
+    btn.classList.add('active');
+    if(type==='bearish') { btn.classList.remove('active'); btn.classList.add('bear-active'); }
+    if(type==='neutral') { btn.classList.remove('active'); btn.classList.add('wait-active'); }
+  }
+  if (type === 'search') { currentSearch = val; }
+  else { currentFilter = type; currentSearch = ''; document.getElementById('patternSearch').value = ''; }
+  renderPatterns();
+}
+
+function renderPatterns() {
+  const grid = document.getElementById('candleGrid');
+  grid.innerHTML = '';
+  const filtered = PATTERNS.filter(p => {
+    if (currentSearch) return p.name.toLowerCase().includes(currentSearch.toLowerCase());
+    if (currentFilter === 'all') return true;
+    return p.bias === currentFilter;
+  });
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'candle-card';
+    const biasLabel = p.bias === 'bullish' ? '🟢 BUY SETUP' : p.bias === 'bearish' ? '🔴 SELL SETUP' : '🟡 WAIT';
+    const signalCls = p.bias === 'bullish' ? 'buy' : p.bias === 'bearish' ? 'sell' : 'wait';
+    const canvasId = 'c_' + p.name.replace(/\W+/g,'_');
+    card.innerHTML = `
+      <div class="candle-canvas-wrap"><canvas id="${canvasId}" width="240" height="110"></canvas></div>
+      <div class="candle-info">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;flex-wrap:wrap">
+          <div class="candle-name">${p.name}</div>
+          <span class="signal ${signalCls}">${biasLabel}</span>
+        </div>
+        <div class="candle-rows">
+          <div class="candle-row"><span class="candle-row-label">✅ Entry</span><span class="candle-row-val">${p.action}</span></div>
+          <div class="candle-row"><span class="candle-row-label">🔍 Confirm</span><span class="candle-row-val">${p.confirm}</span></div>
+          <div class="candle-row"><span class="candle-row-label">❌ Fail if</span><span class="candle-row-val">${p.invalid}</span></div>
+          <div class="candle-row"><span class="candle-row-label">💡 Notes</span><span class="candle-row-val">${p.notes}</span></div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+    requestAnimationFrame(() => {
+      const canvas = document.getElementById(canvasId);
+      if (canvas) renderCandlePattern(canvas, p.candles);
+    });
+  });
+}
+renderPatterns();
+
+// ── CHART DRAWING FUNCTIONS ──
+function drawHnS(canvasId, inverse) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = BG_COL; ctx.fillRect(0,0,W,H);
+  const col = inverse ? BULL_COL : BEAR_COL;
+  ctx.strokeStyle = col; ctx.lineWidth = 2;
+  const pts = inverse
+    ? [[20,80],[50,50],[80,30],[110,50],[140,80],[170,20],[200,80],[230,50],[260,80],[295,20]]
+    : [[20,60],[50,90],[80,50],[110,30],[140,60],[170,10],[200,60],[230,50],[260,80],[295,55]];
+  const neckY = inverse ? 80 : 60;
+  ctx.beginPath(); pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1])); ctx.stroke();
+  ctx.setLineDash([4,3]); ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(20, neckY); ctx.lineTo(320, neckY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = '10px Space Mono, monospace';
+  if(!inverse) { ctx.fillText('L shdr', 60, 45); ctx.fillText('HEAD', 145, 25); ctx.fillText('R shdr', 215, 45); }
+  else { ctx.fillText('L shdr', 60, 95); ctx.fillText('HEAD', 145, 95); ctx.fillText('R shdr', 215, 95); }
+}
+
+function drawDoubleTop(id) {
+  const canvas = document.getElementById(id); if (!canvas) return;
+  const W=canvas.width, H=canvas.height, ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H); ctx.fillStyle=BG_COL; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=BEAR_COL; ctx.lineWidth=2;
+  const pts=[[20,100],[60,40],[100,80],[140,40],[180,80],[220,110],[270,80]];
+  ctx.beginPath(); pts.forEach((p,i)=>i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1])); ctx.stroke();
+  ctx.setLineDash([4,3]); ctx.strokeStyle='rgba(255,255,255,0.3)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(20,80); ctx.lineTo(320,80); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='10px Space Mono, monospace';
+  ctx.fillText('Top 1', 45, 35); ctx.fillText('Top 2', 125, 35);
+}
+
+function drawBullFlag(id) {
+  const canvas = document.getElementById(id); if (!canvas) return;
+  const W=canvas.width, H=canvas.height, ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H); ctx.fillStyle=BG_COL; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=BULL_COL; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(20,120); ctx.lineTo(100,30); ctx.stroke();
+  ctx.strokeStyle='rgba(0,212,170,0.5)'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(100,30); ctx.lineTo(160,50); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(110,45); ctx.lineTo(170,65); ctx.stroke();
+  ctx.strokeStyle=BULL_COL; ctx.lineWidth=2.5;
+  ctx.beginPath(); ctx.moveTo(165,52); ctx.lineTo(230,10); ctx.stroke();
+  ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='10px Space Mono, monospace';
+  ctx.fillText('POLE', 40, 80); ctx.fillText('FLAG', 115, 70);
+}
+
+function drawAscTriangle(id) {
+  const canvas = document.getElementById(id); if (!canvas) return;
+  const W=canvas.width, H=canvas.height, ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H); ctx.fillStyle=BG_COL; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=BULL_COL; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(20,120); ctx.lineTo(80,40); ctx.lineTo(100,80); ctx.lineTo(150,40); ctx.lineTo(170,60); ctx.lineTo(220,40); ctx.lineTo(280,10); ctx.stroke();
+  ctx.setLineDash([4,3]); ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(80,40); ctx.lineTo(280,40); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(20,120); ctx.lineTo(220,40); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='10px Space Mono, monospace';
+  ctx.fillText('Flat R', 130, 35); ctx.fillText('Rising S', 30, 100);
+}
+
+function drawDescTriangle(id) {
+  const canvas = document.getElementById(id); if (!canvas) return;
+  const W=canvas.width, H=canvas.height, ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H); ctx.fillStyle=BG_COL; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle=BEAR_COL; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(20,20); ctx.lineTo(80,100); ctx.lineTo(100,60); ctx.lineTo(150,100); ctx.lineTo(170,80); ctx.lineTo(220,100); ctx.lineTo(280,130); ctx.stroke();
+  ctx.setLineDash([4,3]); ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(80,100); ctx.lineTo(280,100); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(20,20); ctx.lineTo(220,100); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='10px Space Mono, monospace';
+  ctx.fillText('Falling R', 30, 50); ctx.fillText('Flat S', 130, 115);
+}
+
+// ── EDUCATIONAL CANVASES ──
+function drawCandleAnatomy() {
+  const canvas = document.getElementById('candleAnatomy');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = BG_COL; ctx.fillRect(0,0,W,H);
+  
+  // Bull candle
+  const bx = 80, by = 40, bw = 30, bh = 80;
+  ctx.strokeStyle = BULL_COL; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx+bw/2, 20); ctx.lineTo(bx+bw/2, 180); ctx.stroke();
+  ctx.fillStyle = 'rgba(0,212,170,0.8)';
+  ctx.fillRect(bx, by+30, bw, bh);
+  ctx.strokeRect(bx, by+30, bw, bh);
+  
+  // Bear candle
+  const rx = 200;
+  ctx.strokeStyle = BEAR_COL;
+  ctx.beginPath(); ctx.moveTo(rx+bw/2, 30); ctx.lineTo(rx+bw/2, 170); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,77,109,0.8)';
+  ctx.fillRect(rx, 50, bw, bh);
+  ctx.strokeRect(rx, 50, bw, bh);
+  
+  // Labels
+  ctx.fillStyle = '#fff'; ctx.font = '10px Space Mono';
+  ctx.fillText('HIGH', bx-35, 25);
+  ctx.fillText('OPEN', bx+40, by+35);
+  ctx.fillText('CLOSE', bx+40, by+bh+25);
+  ctx.fillText('LOW', bx-30, 185);
+  ctx.fillText('BULLISH', bx-5, H-10);
+  ctx.fillText('BEARISH', rx-5, H-10);
+}
+
+function drawSRCanvas() {
+  const canvas = document.getElementById('srCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = BG_COL; ctx.fillRect(0,0,W,H);
+  
+  // Price line
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  const pts = [[20,140],[60,60],[100,120],[140,50],[180,100],[220,40],[260,80],[300,30],[340,70],[380,20]];
+  ctx.beginPath();
+  pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]));
+  ctx.stroke();
+  
+  // Support
+  ctx.strokeStyle = BULL_COL; ctx.lineWidth = 2; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(0,120); ctx.lineTo(400,120); ctx.stroke();
+  
+  // Resistance
+  ctx.strokeStyle = BEAR_COL;
+  ctx.beginPath(); ctx.moveTo(0,50); ctx.lineTo(400,50); ctx.stroke();
+  
+  // Labels
+  ctx.fillStyle = BEAR_COL; ctx.font = '11px Space Mono';
+  ctx.fillText('RESISTANCE', 310, 45);
+  ctx.fillStyle = BULL_COL;
+  ctx.fillText('SUPPORT', 310, 135);
+}
+
+function drawTrendCanvas() {
+  const canvas = document.getElementById('trendCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = BG_COL; ctx.fillRect(0,0,W,H);
+  
+  // Uptrend
+  ctx.strokeStyle = BULL_COL; ctx.lineWidth = 2;
+  const pts = [[20,180],[60,120],[90,150],[130,90],[160,120],[200,60],[230,90],[270,30]];
+  ctx.beginPath();
+  pts.forEach((p,i) => i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]));
+  ctx.stroke();
+  
+  // Labels
+  ctx.fillStyle = BULL_COL; ctx.font = '10px Space Mono';
+  ctx.fillText('HH', 125, 85);
+  ctx.fillText('HH', 195, 55);
+  ctx.fillText('HH', 265, 25);
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('HL', 85, 165);
+  ctx.fillText('HL', 155, 135);
+  ctx.fillText('HL', 225, 105);
+}
+
+// Initialize canvases
+requestAnimationFrame(() => {
+  drawHnS('hnsCanvas', false);
+  drawHnS('ihnsCanvas', true);
+  drawDoubleTop('dtCanvas');
+  drawBullFlag('bfCanvas');
+  drawAscTriangle('atCanvas');
+  drawDescTriangle('descTriCanvas');
+  drawCandleAnatomy();
+  drawSRCanvas();
+  drawTrendCanvas();
+});
+
+// ── LIGHTWEIGHT CHARTS ──
+let ltChart = null, candleSeries = null, barSec = 3600, liveTimer = null, ohlcData = [];
+function genOHLC(n, stepSec) {
+  const out = []; let c = 1.085 + Math.random()*0.003;
+  const start = Math.floor(Date.now()/1000) - n*stepSec;
+  for (let i=0;i<n;i++) {
+    const t = start + i*stepSec, o=c, v=0.00012+Math.random()*0.0002;
+    c = o+(Math.random()-0.47)*v;
+    const h=Math.max(o,c)+Math.random()*v*0.5, l=Math.min(o,c)-Math.random()*v*0.5;
+    out.push({time:t, open:o, high:h, low:l, close:c});
+  }
+  return out;
+}
+function approxRsi(closes, p) {
+  if(closes.length<p+1) return null;
+  let g=0,l2=0;
+  for(let i=closes.length-p;i<closes.length;i++){const ch=closes[i]-closes[i-1];if(ch>=0)g+=ch;else l2-=ch;}
+  const ag=g/p,al=l2/p;
+  if(al===0)return 100;
+  return 100-100/(1+ag/al);
+}
+function updateChartStats() {
+  if(!ohlcData.length)return;
+  const last=ohlcData[ohlcData.length-1];
+  const rsi=approxRsi(ohlcData.map(d=>d.close),14);
+  const rsiEl=document.getElementById('sc-rsi');
+  let biasText='—', biasColor='var(--muted)';
+  const closeEl=document.getElementById('sc-close');
+  if(last.close>ohlcData[ohlcData.length>5?ohlcData.length-5:0].close){closeEl.style.color='var(--bull)';}else{closeEl.style.color='var(--bear)';}
+  closeEl.textContent=last.close.toFixed(5);
+  document.getElementById('sc-range').textContent=(last.high-last.low).toFixed(5);
+  if(rsi!=null){
+    rsiEl.textContent=rsi.toFixed(1);
+    if(rsi>70){rsiEl.style.color='var(--bear)';biasText='Overbought';biasColor='var(--bear)';}
+    else if(rsi<30){rsiEl.style.color='var(--bull)';biasText='Oversold';biasColor='var(--bull)';}
+    else{rsiEl.style.color='var(--muted)';biasText='Neutral';biasColor='var(--muted)';}
+  }
+  const biasEl=document.getElementById('sc-bias');
+  biasEl.textContent=biasText; biasEl.style.color=biasColor;
+}
+function initChart() {
+  const el=document.getElementById('chart-main');
+  if(!el||el.dataset.inited==='1') return;
+  el.dataset.inited='1'; el.innerHTML='';
+  if(typeof LightweightCharts==='undefined')return;
+  ltChart=LightweightCharts.createChart(el,{
+    width:el.clientWidth, height:480,
+    layout:{background:{type:'solid',color:'#0d1117'},textColor:'#64748b'},
+    grid:{vertLines:{color:'#111820'},horzLines:{color:'#111820'}},
+    rightPriceScale:{borderVisible:false},
+    timeScale:{borderVisible:false,timeVisible:true,secondsVisible:false},
+    crosshair:{mode:1},
+  });
+  const csOpts={upColor:BULL_COL,downColor:BEAR_COL,borderUpColor:BULL_COL,borderDownColor:BEAR_COL,wickUpColor:BULL_COL,wickDownColor:BEAR_COL};
+  candleSeries = typeof ltChart.addCandlestickSeries==='function'
+    ? ltChart.addCandlestickSeries(csOpts)
+    : ltChart.addSeries(LightweightCharts.CandlestickSeries, csOpts);
+  ohlcData=genOHLC(200,barSec);
+  candleSeries.setData(ohlcData.map(d=>({time:d.time,open:d.open,high:d.high,low:d.low,close:d.close})));
+  ltChart.timeScale().fitContent();
+  updateChartStats();
+  if(!liveTimer) liveTimer=setInterval(()=>{
+    if(!candleSeries||!ohlcData.length)return;
+    const last=ohlcData[ohlcData.length-1];
+    const t=last.time+barSec,o=last.close,v=0.00009+Math.random()*0.00015;
+    const c2=o+(Math.random()-0.48)*v,h=Math.max(o,c2)+Math.random()*v*0.4,l=Math.min(o,c2)-Math.random()*v*0.4;
+    ohlcData.push({time:t,open:o,high:h,low:l,close:c2});
+    if(ohlcData.length>250)ohlcData.shift();
+    candleSeries.update({time:t,open:o,high:h,low:l,close:c2});
+    updateChartStats();
+  }, 3000);
+  window.addEventListener('resize',()=>{if(ltChart){const b=document.getElementById('chart-main');if(b)ltChart.applyOptions({width:b.clientWidth});}});
+}
+function setTF(sec, btn) {
+  barSec=sec;
+  document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ohlcData=genOHLC(200,barSec);
+  if(candleSeries){candleSeries.setData(ohlcData.map(d=>({time:d.time,open:d.open,high:d.high,low:d.low,close:d.close})));ltChart.timeScale().fitContent();}
+  updateChartStats();
+}
+function loadLtChart() {
+  const s=document.createElement('script');
+  s.src='[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js)';
+  s.onload=initChart; s.onerror=()=>{
+    const el=document.getElementById('chart-main');
+    if(el)el.innerHTML='<div style="padding:2rem;text-align:center;color:var(--muted);font-size:0.82rem">Chart library blocked. All other features still work.</div>';
+  };
+  document.body.appendChild(s);
+}
+const chartObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){chartObs.disconnect();loadLtChart();}
+},{rootMargin:'100px',threshold:0.01});
+const chartEl = document.getElementById('live-chart');
+if(chartEl) chartObs.observe(chartEl);
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+document.querySelectorAll('section').forEach(s=>{ s.classList.add('reveal'); revealObs.observe(s); });
+
+</script>
+</body>
+</html>
